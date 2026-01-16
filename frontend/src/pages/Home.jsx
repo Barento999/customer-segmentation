@@ -59,10 +59,10 @@ const Home = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"></div>
         <div
-          className="absolute bottom-0 right-0 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
+          className="absolute bottom-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "1s" }}></div>
         <div
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl animate-float"
+          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "2s" }}></div>
       </div>
 
@@ -70,7 +70,7 @@ const Home = () => {
         {/* Header */}
         <div className="text-center mb-4 sm:mb-8 animate-fadeIn">
           <div className="inline-block mb-3 animate-bounce-slow">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 rounded-2xl shadow-2xl flex items-center justify-center mx-auto transform hover:scale-110 transition-transform duration-300">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-cool rounded-2xl shadow-2xl flex items-center justify-center mx-auto transform hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg"
                 fill="none"
@@ -85,10 +85,10 @@ const Home = () => {
               </svg>
             </div>
           </div>
-          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 mb-2 sm:mb-3 drop-shadow-2xl">
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold gradient-text mb-2 sm:mb-3 drop-shadow-lg">
             Customer Segmentation AI
           </h1>
-          <p className="text-sm sm:text-lg text-blue-100 px-2 font-medium drop-shadow-lg">
+          <p className="text-sm sm:text-lg text-text-secondary px-2 font-medium">
             🚀 Predict customer segments instantly with Machine Learning
           </p>
         </div>
@@ -133,14 +133,14 @@ const Home = () => {
             {loading ? (
               <div className="glass rounded-2xl shadow-2xl p-6 h-full animate-pulse">
                 <div className="space-y-4">
-                  <div className="h-8 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg w-3/4"></div>
-                  <div className="h-24 bg-gradient-to-r from-purple-200 to-pink-200 rounded-xl"></div>
-                  <div className="h-4 bg-gradient-to-r from-purple-200 to-pink-200 rounded w-1/2"></div>
+                  <div className="h-8 bg-gradient-cool rounded-lg w-3/4 opacity-20"></div>
+                  <div className="h-24 bg-gradient-purple rounded-xl opacity-20"></div>
+                  <div className="h-4 bg-gradient-cool rounded w-1/2 opacity-20"></div>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="h-16 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg"></div>
-                    <div className="h-16 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg"></div>
-                    <div className="h-16 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg"></div>
-                    <div className="h-16 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg"></div>
+                    <div className="h-16 bg-gradient-primary rounded-lg opacity-20"></div>
+                    <div className="h-16 bg-gradient-secondary rounded-lg opacity-20"></div>
+                    <div className="h-16 bg-gradient-warm rounded-lg opacity-20"></div>
+                    <div className="h-16 bg-gradient-purple rounded-lg opacity-20"></div>
                   </div>
                 </div>
               </div>
@@ -148,10 +148,10 @@ const Home = () => {
               <ResultCard result={result} />
             ) : (
               <div className="glass rounded-2xl shadow-2xl p-6 sm:p-8 h-full flex items-center justify-center">
-                <div className="text-center text-purple-600 animate-float">
+                <div className="text-center animate-float">
                   <div className="relative">
                     <svg
-                      className="w-20 h-20 sm:w-28 sm:h-28 mx-auto mb-4 opacity-80"
+                      className="w-20 h-20 sm:w-28 sm:h-28 mx-auto mb-4 text-accent-purple opacity-80"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24">
@@ -162,12 +162,12 @@ const Home = () => {
                         d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                       />
                     </svg>
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-purple-500 rounded-full animate-ping"></div>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent-purple rounded-full animate-ping"></div>
                   </div>
-                  <p className="text-lg sm:text-xl font-bold text-gray-700 mb-2">
+                  <p className="text-lg sm:text-xl font-bold text-text-primary mb-2">
                     ✨ Ready to Predict
                   </p>
-                  <p className="text-sm sm:text-base text-gray-600">
+                  <p className="text-sm sm:text-base text-text-secondary">
                     Fill out the form to discover customer segments
                   </p>
                 </div>
@@ -180,7 +180,7 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto mt-6 sm:mt-8">
           <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 card-hover animate-slideInLeft border border-white/30 backdrop-blur-xl">
             <div className="flex items-center mb-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mr-3 shadow-xl">
+              <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mr-3 shadow-lg">
                 <svg
                   className="w-7 h-7 text-white"
                   fill="none"
@@ -194,11 +194,11 @@ const Home = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-gray-800">
+              <h3 className="text-lg font-bold text-text-primary">
                 ⚡ Fast Predictions
               </h3>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-text-secondary text-sm leading-relaxed">
               Get instant customer segment predictions powered by K-Means
               clustering AI
             </p>
@@ -208,7 +208,7 @@ const Home = () => {
             className="glass rounded-2xl shadow-2xl p-4 sm:p-6 card-hover animate-fadeIn border border-white/30 backdrop-blur-xl"
             style={{ animationDelay: "0.1s" }}>
             <div className="flex items-center mb-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl flex items-center justify-center mr-3 shadow-xl">
+              <div className="w-12 h-12 bg-gradient-secondary rounded-xl flex items-center justify-center mr-3 shadow-lg">
                 <svg
                   className="w-7 h-7 text-white"
                   fill="none"
@@ -222,21 +222,21 @@ const Home = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-gray-800">
+              <h3 className="text-lg font-bold text-text-primary">
                 🎯 High Accuracy
               </h3>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-text-secondary text-sm leading-relaxed">
               ML model trained with optimal clusters using silhouette score
               analysis
             </p>
           </div>
 
           <div
-            className="glass rounded-2xl shadow-2xl p-4 sm:p-6 card-hover animate-slideInRight border border-white/30 backdrop-blur-xl"
+            className="glass rounded-2xl shadow-2xl p-4 sm:p-6 card-hover-purple animate-slideInRight border border-white/30 backdrop-blur-xl"
             style={{ animationDelay: "0.2s" }}>
             <div className="flex items-center mb-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-violet-400 to-purple-500 rounded-xl flex items-center justify-center mr-3 shadow-xl">
+              <div className="w-12 h-12 bg-gradient-purple rounded-xl flex items-center justify-center mr-3 shadow-lg">
                 <svg
                   className="w-7 h-7 text-white"
                   fill="none"
@@ -250,11 +250,11 @@ const Home = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-gray-800">
+              <h3 className="text-lg font-bold text-text-primary">
                 📊 Visual Insights
               </h3>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-text-secondary text-sm leading-relaxed">
               Explore cluster statistics and visualizations in the dashboard
             </p>
           </div>

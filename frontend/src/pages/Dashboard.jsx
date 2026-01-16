@@ -70,7 +70,7 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gray-50 py-4 sm:py-8 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl animate-float"></div>
         <div
           className="absolute bottom-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "1s" }}></div>
@@ -83,7 +83,7 @@ const Dashboard = () => {
         {/* Header */}
         <div className="mb-4 sm:mb-8 animate-fadeIn">
           <div className="inline-block mb-3">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center mx-auto animate-bounce-slow transform hover:scale-110 transition-transform duration-300">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-purple rounded-2xl shadow-2xl flex items-center justify-center mx-auto animate-bounce-slow transform hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg"
                 fill="none"
@@ -98,10 +98,10 @@ const Dashboard = () => {
               </svg>
             </div>
           </div>
-          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-blue-200 to-purple-200 mb-2 drop-shadow-2xl">
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold gradient-text-purple mb-2 drop-shadow-lg">
             📊 Analytics Dashboard
           </h1>
-          <p className="text-sm sm:text-lg text-blue-100 font-medium drop-shadow-lg">
+          <p className="text-sm sm:text-lg text-text-secondary font-medium">
             View cluster statistics and train the ML model
           </p>
         </div>
@@ -139,7 +139,7 @@ const Dashboard = () => {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="mb-4 md:mb-0">
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center shadow-xl">
+                <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center shadow-lg">
                   <svg
                     className="w-7 h-7 text-white"
                     fill="none"
@@ -153,21 +153,21 @@ const Dashboard = () => {
                     />
                   </svg>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
+                <h2 className="text-xl sm:text-2xl font-bold text-text-primary">
                   🤖 Model Training
                 </h2>
               </div>
-              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+              <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
                 Train the K-Means clustering model with the customer dataset
               </p>
             </div>
             <button
               onClick={handleTrain}
               disabled={training || apiStatus !== "connected"}
-              className={`px-6 py-3 sm:py-4 rounded-xl font-bold text-white text-base sm:text-lg shadow-xl transition-all transform ${
+              className={`px-6 py-3 sm:py-4 rounded-xl font-bold text-white text-base sm:text-lg shadow-lg transition-all transform ${
                 training || apiStatus !== "connected"
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 hover:scale-105 hover:shadow-2xl"
+                  : "bg-gradient-primary hover:scale-105 hover:shadow-xl"
               }`}>
               {training ? (
                 <span className="flex items-center justify-center">
@@ -279,12 +279,12 @@ const Dashboard = () => {
         {loading && (
           <div className="text-center py-12 animate-fadeIn">
             <div className="inline-block relative">
-              <div className="w-16 h-16 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
+              <div className="w-16 h-16 border-4 border-accent-purple/30 border-t-accent-purple rounded-full animate-spin"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-8 h-8 bg-purple-600 rounded-full animate-pulse"></div>
+                <div className="w-8 h-8 bg-accent-purple rounded-full animate-pulse"></div>
               </div>
             </div>
-            <p className="mt-4 text-white font-bold text-lg drop-shadow">
+            <p className="mt-4 text-text-primary font-bold text-lg">
               ✨ Loading cluster data...
             </p>
           </div>

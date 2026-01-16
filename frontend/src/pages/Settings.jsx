@@ -44,12 +44,12 @@ const Settings = () => {
     <div className="min-h-screen bg-gray-50 py-4 sm:py-8 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl animate-float"></div>
         <div
-          className="absolute bottom-0 left-0 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
+          className="absolute bottom-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "1s" }}></div>
         <div
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl animate-float"
+          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "2s" }}></div>
       </div>
 
@@ -57,7 +57,7 @@ const Settings = () => {
         {/* Header */}
         <div className="text-center mb-6 sm:mb-10 animate-fadeIn">
           <div className="inline-block mb-3 animate-bounce-slow">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-400 via-pink-500 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center mx-auto transform hover:scale-110 transition-transform duration-300">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-purple rounded-2xl shadow-2xl flex items-center justify-center mx-auto transform hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg"
                 fill="none"
@@ -78,10 +78,10 @@ const Settings = () => {
               </svg>
             </div>
           </div>
-          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-pink-200 to-purple-200 mb-2 sm:mb-3 drop-shadow-2xl">
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold gradient-text-purple mb-2 sm:mb-3 drop-shadow-lg">
             ⚙️ Settings
           </h1>
-          <p className="text-sm sm:text-lg text-blue-100 px-2 font-medium drop-shadow-lg">
+          <p className="text-sm sm:text-lg text-text-secondary px-2 font-medium">
             Customize your app experience
           </p>
         </div>

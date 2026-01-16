@@ -26,15 +26,15 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-              <span className="text-text-primary font-extrabold text-lg sm:text-xl drop-shadow-lg">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-accent-blue to-accent-green rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+              <span className="text-white font-extrabold text-lg sm:text-xl">
                 CS
               </span>
             </div>
-            <span className="font-bold text-base sm:text-xl hidden md:inline drop-shadow-lg text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
+            <span className="font-bold text-base sm:text-xl hidden md:inline text-text-primary">
               Customer Segmentation
             </span>
-            <span className="font-bold text-base md:hidden drop-shadow-lg text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-pink-200">
+            <span className="font-bold text-base md:hidden text-text-primary">
               CS AI
             </span>
           </Link>
@@ -48,8 +48,8 @@ const Navbar = () => {
                     to="/admin/dashboard"
                     className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
                       isActive("/admin/dashboard")
-                        ? "bg-orange-500 text-text-primary shadow-lg scale-105"
-                        : "bg-orange-500/80 text-text-primary hover:bg-orange-500 hover:scale-105"
+                        ? "bg-accent-orange text-white shadow-lg scale-105"
+                        : "text-text-secondary hover:bg-gray-100 hover:text-accent-orange hover:scale-105"
                     }`}>
                     👑 Admin
                   </Link>
@@ -59,8 +59,8 @@ const Navbar = () => {
                   to="/"
                   className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
                     isActive("/")
-                      ? "bg-gradient-to-r from-purple-600 to-pink-600 text-text-primary shadow-lg scale-105"
-                      : "hover:bg-purple-800/50 hover:scale-105"
+                      ? "bg-accent-blue text-white shadow-lg scale-105"
+                      : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue hover:scale-105"
                   }`}>
                   Home
                 </Link>
@@ -68,8 +68,8 @@ const Navbar = () => {
                   to="/dashboard"
                   className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
                     isActive("/dashboard")
-                      ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-text-primary shadow-lg scale-105"
-                      : "hover:bg-purple-800/50 hover:scale-105"
+                      ? "bg-accent-blue text-white shadow-lg scale-105"
+                      : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue hover:scale-105"
                   }`}>
                   Dashboard
                 </Link>
@@ -77,8 +77,8 @@ const Navbar = () => {
                   to="/history"
                   className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
                     isActive("/history")
-                      ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-text-primary shadow-lg scale-105"
-                      : "hover:bg-purple-800/50 hover:scale-105"
+                      ? "bg-accent-green text-white shadow-lg scale-105"
+                      : "text-text-secondary hover:bg-gray-100 hover:text-accent-green hover:scale-105"
                   }`}>
                   History
                 </Link>
@@ -86,8 +86,8 @@ const Navbar = () => {
                   to="/settings"
                   className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
                     isActive("/settings")
-                      ? "bg-gradient-to-r from-purple-600 to-pink-600 text-text-primary shadow-lg scale-105"
-                      : "hover:bg-purple-800/50 hover:scale-105"
+                      ? "bg-accent-blue text-white shadow-lg scale-105"
+                      : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue hover:scale-105"
                   }`}>
                   Settings
                 </Link>
@@ -97,8 +97,8 @@ const Navbar = () => {
               to="/about"
               className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
                 isActive("/about")
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-text-primary shadow-lg scale-105"
-                  : "hover:bg-purple-800/50 hover:scale-105"
+                  ? "bg-accent-blue text-white shadow-lg scale-105"
+                  : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue hover:scale-105"
               }`}>
               About
             </Link>
@@ -106,8 +106,8 @@ const Navbar = () => {
               to="/documentation"
               className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
                 isActive("/documentation")
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-text-primary shadow-lg scale-105"
-                  : "hover:bg-purple-800/50 hover:scale-105"
+                  ? "bg-accent-blue text-white shadow-lg scale-105"
+                  : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue hover:scale-105"
               }`}>
               Docs
             </Link>
@@ -117,9 +117,9 @@ const Navbar = () => {
               <div className="relative ml-2">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-purple-800/50 hover:bg-purple-700/50 transition-all">
-                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-text-primary font-bold text-sm">
+                  className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-all text-text-primary">
+                  <div className="w-8 h-8 bg-gradient-to-br from-accent-blue to-accent-green rounded-full flex items-center justify-center shadow-md">
+                    <span className="text-white font-bold text-sm">
                       {user?.username?.charAt(0).toUpperCase() || "U"}
                     </span>
                   </div>
@@ -141,24 +141,24 @@ const Navbar = () => {
                 </button>
 
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl py-2 animate-fadeIn">
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 animate-fadeIn">
                     {user?.role === "admin" && (
                       <Link
                         to="/admin/dashboard"
                         onClick={() => setUserMenuOpen(false)}
-                        className="block px-4 py-2 text-orange-600 font-semibold hover:bg-orange-50 transition-colors">
+                        className="block px-4 py-2 text-accent-orange font-semibold hover:bg-orange-50 transition-colors">
                         👑 Admin Dashboard
                       </Link>
                     )}
                     <Link
                       to="/profile"
                       onClick={() => setUserMenuOpen(false)}
-                      className="block px-4 py-2 text-gray-700 hover:bg-purple-50 transition-colors">
+                      className="block px-4 py-2 text-text-primary hover:bg-blue-50 transition-colors">
                       👤 Profile
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className="w-full text-left px-4 py-2 text-gray-700 hover:bg-purple-50 transition-colors">
+                      className="w-full text-left px-4 py-2 text-text-primary hover:bg-red-50 transition-colors">
                       🚪 Logout
                     </button>
                   </div>
@@ -168,12 +168,12 @@ const Navbar = () => {
               <div className="flex items-center space-x-2 ml-2">
                 <Link
                   to="/login"
-                  className="px-4 py-2 rounded-xl bg-purple-800/50 hover:bg-purple-700/50 transition-all font-semibold">
+                  className="px-4 py-2 rounded-xl border border-gray-300 hover:border-accent-blue hover:bg-blue-50 transition-all font-semibold text-text-primary">
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transition-all font-semibold shadow-lg">
+                  className="px-4 py-2 rounded-xl bg-accent-blue hover:bg-blue-600 transition-all font-semibold text-white shadow-md">
                   Sign Up
                 </Link>
               </div>
@@ -183,7 +183,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden px-3 py-2 rounded-xl hover:bg-purple-800/50 transition-all">
+            className="lg:hidden px-3 py-2 rounded-xl hover:bg-gray-100 transition-all text-text-primary">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -214,16 +214,18 @@ const Navbar = () => {
             <div className="flex flex-col space-y-2">
               {isAuthenticated ? (
                 <>
-                  <div className="px-4 py-2 bg-purple-800/30 rounded-xl mb-2">
+                  <div className="px-4 py-2 bg-gray-100 rounded-xl mb-2">
                     <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
-                        <span className="text-text-primary font-bold text-sm">
+                      <div className="w-8 h-8 bg-gradient-to-br from-accent-blue to-accent-green rounded-full flex items-center justify-center shadow-md">
+                        <span className="text-white font-bold text-sm">
                           {user?.username?.charAt(0).toUpperCase() || "U"}
                         </span>
                       </div>
-                      <span className="font-semibold">{user?.username}</span>
+                      <span className="font-semibold text-text-primary">
+                        {user?.username}
+                      </span>
                       {user?.role === "admin" && (
-                        <span className="text-xs bg-orange-500 px-2 py-1 rounded-full">
+                        <span className="text-xs bg-accent-orange text-white px-2 py-1 rounded-full">
                           Admin
                         </span>
                       )}
@@ -234,8 +236,8 @@ const Navbar = () => {
                     onClick={() => setMenuOpen(false)}
                     className={`px-4 py-2 rounded-xl transition-all text-sm font-semibold ${
                       isActive("/")
-                        ? "bg-gradient-to-r from-purple-600 to-pink-600 text-text-primary shadow-lg"
-                        : "hover:bg-purple-800/50"
+                        ? "bg-accent-blue text-white shadow-lg"
+                        : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue"
                     }`}>
                     🏠 Home
                   </Link>
@@ -244,8 +246,8 @@ const Navbar = () => {
                     onClick={() => setMenuOpen(false)}
                     className={`px-4 py-2 rounded-xl transition-all text-sm font-semibold ${
                       isActive("/dashboard")
-                        ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-text-primary shadow-lg"
-                        : "hover:bg-purple-800/50"
+                        ? "bg-accent-blue text-white shadow-lg"
+                        : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue"
                     }`}>
                     📊 Dashboard
                   </Link>
@@ -254,8 +256,8 @@ const Navbar = () => {
                     onClick={() => setMenuOpen(false)}
                     className={`px-4 py-2 rounded-xl transition-all text-sm font-semibold ${
                       isActive("/history")
-                        ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-text-primary shadow-lg"
-                        : "hover:bg-purple-800/50"
+                        ? "bg-accent-green text-white shadow-lg"
+                        : "text-text-secondary hover:bg-gray-100 hover:text-accent-green"
                     }`}>
                     🕐 History
                   </Link>
@@ -264,8 +266,8 @@ const Navbar = () => {
                     onClick={() => setMenuOpen(false)}
                     className={`px-4 py-2 rounded-xl transition-all text-sm font-semibold ${
                       isActive("/settings")
-                        ? "bg-gradient-to-r from-purple-600 to-pink-600 text-text-primary shadow-lg"
-                        : "hover:bg-purple-800/50"
+                        ? "bg-accent-blue text-white shadow-lg"
+                        : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue"
                     }`}>
                     ⚙️ Settings
                   </Link>
@@ -274,8 +276,8 @@ const Navbar = () => {
                     onClick={() => setMenuOpen(false)}
                     className={`px-4 py-2 rounded-xl transition-all text-sm font-semibold ${
                       isActive("/profile")
-                        ? "bg-gradient-to-r from-purple-600 to-pink-600 text-text-primary shadow-lg"
-                        : "hover:bg-purple-800/50"
+                        ? "bg-accent-blue text-white shadow-lg"
+                        : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue"
                     }`}>
                     👤 Profile
                   </Link>
@@ -285,8 +287,8 @@ const Navbar = () => {
                       onClick={() => setMenuOpen(false)}
                       className={`px-4 py-2 rounded-xl transition-all text-sm font-semibold ${
                         isActive("/admin/dashboard")
-                          ? "bg-orange-500 text-text-primary shadow-lg"
-                          : "bg-orange-500/80 text-text-primary hover:bg-orange-500"
+                          ? "bg-accent-orange text-white shadow-lg"
+                          : "text-text-secondary hover:bg-gray-100 hover:text-accent-orange"
                       }`}>
                       👑 Admin Dashboard
                     </Link>
@@ -297,13 +299,13 @@ const Navbar = () => {
                   <Link
                     to="/login"
                     onClick={() => setMenuOpen(false)}
-                    className="px-4 py-2 rounded-xl bg-purple-800/50 hover:bg-purple-700/50 transition-all text-sm font-semibold">
+                    className="px-4 py-2 rounded-xl border border-gray-300 hover:border-accent-blue hover:bg-blue-50 transition-all text-sm font-semibold text-text-primary">
                     🔑 Login
                   </Link>
                   <Link
                     to="/register"
                     onClick={() => setMenuOpen(false)}
-                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transition-all text-sm font-semibold shadow-lg">
+                    className="px-4 py-2 rounded-xl bg-accent-blue hover:bg-blue-600 transition-all text-sm font-semibold text-white shadow-md">
                     ✨ Sign Up
                   </Link>
                 </>
@@ -313,8 +315,8 @@ const Navbar = () => {
                 onClick={() => setMenuOpen(false)}
                 className={`px-4 py-2 rounded-xl transition-all text-sm font-semibold ${
                   isActive("/about")
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-text-primary shadow-lg"
-                    : "hover:bg-purple-800/50"
+                    ? "bg-accent-blue text-white shadow-lg"
+                    : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue"
                 }`}>
                 ℹ️ About
               </Link>
@@ -323,8 +325,8 @@ const Navbar = () => {
                 onClick={() => setMenuOpen(false)}
                 className={`px-4 py-2 rounded-xl transition-all text-sm font-semibold ${
                   isActive("/documentation")
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-text-primary shadow-lg"
-                    : "hover:bg-purple-800/50"
+                    ? "bg-accent-blue text-white shadow-lg"
+                    : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue"
                 }`}>
                 📚 Documentation
               </Link>
@@ -334,7 +336,7 @@ const Navbar = () => {
                     handleLogout();
                     setMenuOpen(false);
                   }}
-                  className="px-4 py-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 transition-all text-sm font-semibold text-left">
+                  className="px-4 py-2 rounded-xl border border-accent-red text-accent-red hover:bg-red-50 transition-all text-sm font-semibold text-left">
                   🚪 Logout
                 </button>
               )}
