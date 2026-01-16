@@ -67,14 +67,25 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 py-4 sm:py-8">
-      <div className="container mx-auto px-3 sm:px-4">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl animate-float"></div>
+        <div
+          className="absolute bottom-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: "1s" }}></div>
+        <div
+          className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: "2s" }}></div>
+      </div>
+
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
         {/* Header */}
         <div className="mb-4 sm:mb-8 animate-fadeIn">
           <div className="inline-block mb-3">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-2xl shadow-2xl flex items-center justify-center mx-auto animate-bounce-slow">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center mx-auto animate-bounce-slow transform hover:scale-110 transition-transform duration-300">
               <svg
-                className="w-10 h-10 sm:w-12 sm:h-12 text-purple-600"
+                className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24">
@@ -87,10 +98,10 @@ const Dashboard = () => {
               </svg>
             </div>
           </div>
-          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-2 drop-shadow-lg">
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-blue-200 to-purple-200 mb-2 drop-shadow-2xl">
             📊 Analytics Dashboard
           </h1>
-          <p className="text-sm sm:text-lg text-white/90 font-medium drop-shadow">
+          <p className="text-sm sm:text-lg text-blue-100 font-medium drop-shadow-lg">
             View cluster statistics and train the ML model
           </p>
         </div>
@@ -124,11 +135,11 @@ const Dashboard = () => {
         </div>
 
         {/* Training Section */}
-        <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 mb-6 border-2 border-white/20 animate-scaleIn">
+        <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 mb-6 border border-white/30 backdrop-blur-xl animate-scaleIn">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="mb-4 md:mb-0">
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center shadow-xl">
                   <svg
                     className="w-7 h-7 text-white"
                     fill="none"
@@ -156,7 +167,7 @@ const Dashboard = () => {
               className={`px-6 py-3 sm:py-4 rounded-xl font-bold text-white text-base sm:text-lg shadow-xl transition-all transform ${
                 training || apiStatus !== "connected"
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 hover:scale-105 hover:shadow-2xl"
+                  : "bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 hover:scale-105 hover:shadow-2xl"
               }`}>
               {training ? (
                 <span className="flex items-center justify-center">
@@ -284,9 +295,9 @@ const Dashboard = () => {
           <div>
             <div className="mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="glass rounded-2xl shadow-2xl p-5 sm:p-6 border-2 border-white/20 card-hover animate-slideInLeft">
+                <div className="glass rounded-2xl shadow-2xl p-5 sm:p-6 border border-white/30 backdrop-blur-xl card-hover animate-slideInLeft">
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
+                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center shadow-xl">
                       <svg
                         className="w-7 h-7 text-white"
                         fill="none"
@@ -304,13 +315,13 @@ const Dashboard = () => {
                       👥 Total Customers
                     </p>
                   </div>
-                  <p className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  <p className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
                     {clusters.total_customers.toLocaleString()}
                   </p>
                 </div>
-                <div className="glass rounded-2xl shadow-2xl p-5 sm:p-6 border-2 border-white/20 card-hover animate-slideInRight">
+                <div className="glass rounded-2xl shadow-2xl p-5 sm:p-6 border border-white/30 backdrop-blur-xl card-hover animate-slideInRight">
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-xl">
                       <svg
                         className="w-7 h-7 text-white"
                         fill="none"

@@ -14,7 +14,7 @@ from app.schema import (
 from app.model import ml_model
 from app.database import init_db, get_db, PredictionHistory, User
 from app.auth import get_current_active_user
-from app.routes import auth, users, profiles
+from app.routes import auth, users, profiles, admin
 
 # Initialize database
 init_db()
@@ -39,6 +39,7 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(profiles.router)
+app.include_router(admin.router)
 
 
 @app.get("/")

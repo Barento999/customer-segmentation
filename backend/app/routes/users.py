@@ -45,6 +45,19 @@ async def update_my_profile(
     db: Session = Depends(get_db)
 ):
     """Update current user's profile"""
+    if user_update.username:
+        # Check if username is already taken by another user
+        existing_user = db.query(User).filter(
+            User.username == user_update.username,
+            User.id != current_user.id
+        ).first()
+        if existing_user:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Username already in use"
+            )
+        current_user.username = user_update.username
+    
     if user_update.email:
         # Check if email is already taken by another user
         existing_user = db.query(User).filter(

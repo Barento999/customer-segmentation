@@ -1,4 +1,4 @@
 """
 Routes package
 """
-from . import auth, users, profiles
+from . import auth, users, profiles, admin

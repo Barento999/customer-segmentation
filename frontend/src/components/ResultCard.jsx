@@ -19,15 +19,15 @@ const ResultCard = ({ result }) => {
   const confidencePercentage = (result.confidence * 100).toFixed(0);
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 animate-fadeIn">
+    <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 animate-fadeIn border border-white/30 backdrop-blur-xl">
       <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">
-        Prediction Result
+        🎯 Prediction Result
       </h2>
 
       {/* Cluster Badge */}
       <div className="mb-6">
         <div
-          className={`inline-block px-6 py-3 rounded-lg border-2 ${getClusterColor(
+          className={`inline-block px-6 py-3 rounded-xl border-2 shadow-xl ${getClusterColor(
             result.cluster
           )}`}>
           <p className="text-sm font-medium">Customer Segment</p>
@@ -47,44 +47,50 @@ const ResultCard = ({ result }) => {
         </div>
         <div className="w-full bg-gray-200 rounded-full h-3">
           <div
-            className="bg-primary-600 h-3 rounded-full transition-all duration-500"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 h-3 rounded-full transition-all duration-500 shadow-lg"
             style={{ width: `${confidencePercentage}%` }}></div>
         </div>
       </div>
 
       {/* Customer Data Summary */}
-      <div className="border-t pt-3 sm:pt-4">
+      <div className="border-t border-gray-200 pt-3 sm:pt-4">
         <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-2 sm:mb-3">
-          Customer Profile
+          📋 Customer Profile
         </h3>
         <div className="grid grid-cols-2 gap-2 sm:gap-4">
-          <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
-            <p className="text-xs text-gray-600">Sex</p>
-            <p className="text-sm sm:text-lg font-semibold text-gray-900">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-2 sm:p-3 rounded-xl border border-blue-200 shadow-md">
+            <p className="text-xs text-blue-600 font-semibold">Sex</p>
+            <p className="text-sm sm:text-lg font-bold text-gray-900">
               {result.customer_data.sex}
             </p>
           </div>
-          <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
-            <p className="text-xs text-gray-600">Age</p>
-            <p className="text-sm sm:text-lg font-semibold text-gray-900">
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-2 sm:p-3 rounded-xl border border-purple-200 shadow-md">
+            <p className="text-xs text-purple-600 font-semibold">Age</p>
+            <p className="text-sm sm:text-lg font-bold text-gray-900">
               {result.customer_data.age}
             </p>
           </div>
-          <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
-            <p className="text-xs text-gray-600">Annual Income</p>
-            <p className="text-sm sm:text-lg font-semibold text-gray-900">
+          <div className="bg-gradient-to-br from-green-50 to-green-100 p-2 sm:p-3 rounded-xl border border-green-200 shadow-md">
+            <p className="text-xs text-green-600 font-semibold">
+              Annual Income
+            </p>
+            <p className="text-sm sm:text-lg font-bold text-gray-900">
               ${result.customer_data.annual_income}k
             </p>
           </div>
-          <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
-            <p className="text-xs text-gray-600">Spending Score</p>
-            <p className="text-sm sm:text-lg font-semibold text-gray-900">
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-2 sm:p-3 rounded-xl border border-orange-200 shadow-md">
+            <p className="text-xs text-orange-600 font-semibold">
+              Spending Score
+            </p>
+            <p className="text-sm sm:text-lg font-bold text-gray-900">
               {result.customer_data.spending_score}/100
             </p>
           </div>
-          <div className="bg-gray-50 p-2 sm:p-3 rounded-lg col-span-2">
-            <p className="text-xs text-gray-600">Purchase Frequency</p>
-            <p className="text-sm sm:text-lg font-semibold text-gray-900">
+          <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-2 sm:p-3 rounded-xl col-span-2 border border-pink-200 shadow-md">
+            <p className="text-xs text-pink-600 font-semibold">
+              Purchase Frequency
+            </p>
+            <p className="text-sm sm:text-lg font-bold text-gray-900">
               {result.customer_data.purchase_frequency}/year
             </p>
           </div>
@@ -93,8 +99,9 @@ const ResultCard = ({ result }) => {
 
       {/* Cluster ID */}
       <div className="mt-4 text-center">
-        <p className="text-sm text-gray-500">
-          Cluster ID: <span className="font-semibold">{result.cluster}</span>
+        <p className="text-sm text-gray-600">
+          Cluster ID:{" "}
+          <span className="font-bold text-purple-600">{result.cluster}</span>
         </p>
       </div>
     </div>

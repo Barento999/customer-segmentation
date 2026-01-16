@@ -80,9 +80,9 @@ const CustomerForm = ({ onSubmit, loading }) => {
   };
 
   return (
-    <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 border-2 border-white/20 animate-slideInLeft">
+    <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 border border-white/30 backdrop-blur-xl animate-slideInLeft">
       <div className="flex items-center mb-4 sm:mb-6">
-        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-3 shadow-lg">
+        <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mr-3 shadow-xl">
           <svg
             className="w-6 h-6 text-white"
             fill="none"

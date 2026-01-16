@@ -39,14 +39,25 @@ const History = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 py-4 sm:py-8">
-      <div className="container mx-auto px-3 sm:px-4 max-w-6xl">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl animate-float"></div>
+        <div
+          className="absolute bottom-0 right-0 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: "1s" }}></div>
+        <div
+          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: "2s" }}></div>
+      </div>
+
+      <div className="container mx-auto px-3 sm:px-4 max-w-6xl relative z-10">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-10 animate-fadeIn">
           <div className="inline-block mb-3 animate-bounce-slow">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-2xl shadow-2xl flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center mx-auto transform hover:scale-110 transition-transform duration-300">
               <svg
-                className="w-10 h-10 sm:w-12 sm:h-12 text-purple-600"
+                className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24">
@@ -59,10 +70,10 @@ const History = () => {
               </svg>
             </div>
           </div>
-          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-2 sm:mb-3 drop-shadow-lg">
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-blue-200 to-purple-200 mb-2 sm:mb-3 drop-shadow-2xl">
             🕐 Prediction History
           </h1>
-          <p className="text-sm sm:text-lg text-white/90 px-2 font-medium drop-shadow">
+          <p className="text-sm sm:text-lg text-blue-100 px-2 font-medium drop-shadow-lg">
             View your past customer segment predictions
           </p>
         </div>

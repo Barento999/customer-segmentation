@@ -25,8 +25,8 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
 const ClusterChart = ({ clusters }) => {
   if (!clusters || clusters.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <p className="text-gray-500 text-center">No cluster data available</p>
+      <div className="glass rounded-2xl shadow-2xl p-6 border border-white/30 backdrop-blur-xl">
+        <p className="text-gray-600 text-center">No cluster data available</p>
       </div>
     );
   }
@@ -57,9 +57,9 @@ const ClusterChart = ({ clusters }) => {
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Cluster Size Distribution */}
-      <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 border-2 border-white/20 animate-fadeIn">
+      <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 border border-white/30 backdrop-blur-xl animate-fadeIn">
         <div className="flex items-center gap-3 mb-3 sm:mb-4">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+          <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center shadow-xl">
             <svg
               className="w-6 h-6 text-white"
               fill="none"
@@ -110,10 +110,10 @@ const ClusterChart = ({ clusters }) => {
 
       {/* Average Metrics by Cluster */}
       <div
-        className="glass rounded-2xl shadow-2xl p-4 sm:p-6 border-2 border-white/20 animate-fadeIn"
+        className="glass rounded-2xl shadow-2xl p-4 sm:p-6 border border-white/30 backdrop-blur-xl animate-fadeIn"
         style={{ animationDelay: "0.1s" }}>
         <div className="flex items-center gap-3 mb-3 sm:mb-4">
-          <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+          <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-xl">
             <svg
               className="w-6 h-6 text-white"
               fill="none"
@@ -148,10 +148,10 @@ const ClusterChart = ({ clusters }) => {
 
       {/* Radar Chart - Cluster Profiles */}
       <div
-        className="glass rounded-2xl shadow-2xl p-4 sm:p-6 border-2 border-white/20 animate-fadeIn"
+        className="glass rounded-2xl shadow-2xl p-4 sm:p-6 border border-white/30 backdrop-blur-xl animate-fadeIn"
         style={{ animationDelay: "0.2s" }}>
         <div className="flex items-center gap-3 mb-3 sm:mb-4">
-          <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center shadow-lg">
+          <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center shadow-xl">
             <svg
               className="w-6 h-6 text-white"
               fill="none"
@@ -210,10 +210,10 @@ const ClusterChart = ({ clusters }) => {
 
       {/* Cluster Statistics Table */}
       <div
-        className="glass rounded-2xl shadow-2xl p-4 sm:p-6 overflow-x-auto border-2 border-white/20 animate-fadeIn"
+        className="glass rounded-2xl shadow-2xl p-4 sm:p-6 overflow-x-auto border border-white/30 backdrop-blur-xl animate-fadeIn"
         style={{ animationDelay: "0.3s" }}>
         <div className="flex items-center gap-3 mb-3 sm:mb-4">
-          <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+          <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-xl">
             <svg
               className="w-6 h-6 text-white"
               fill="none"
