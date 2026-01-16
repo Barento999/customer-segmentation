@@ -70,20 +70,18 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gray-50 py-4 sm:py-8 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl"></div>
         <div
-          className="absolute bottom-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}></div>
+          className="absolute bottom-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl"></div>
         <div
-          className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}></div>
+          className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-3 sm:px-4 relative z-10">
         {/* Header */}
-        <div className="mb-4 sm:mb-8 animate-fadeIn">
+        <div className="mb-4 sm:mb-8">
           <div className="inline-block mb-3">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-purple rounded-2xl shadow-2xl flex items-center justify-center mx-auto animate-bounce-slow transform hover:scale-110 transition-transform duration-300">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-purple rounded-2xl shadow-2xl flex items-center justify-center mx-auto transform hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg"
                 fill="none"
@@ -107,7 +105,7 @@ const Dashboard = () => {
         </div>
 
         {/* API Status */}
-        <div className="mb-6 animate-slideInLeft">
+        <div className="mb-6">
           <div
             className={`inline-flex items-center px-4 sm:px-5 py-2 sm:py-3 rounded-xl shadow-lg border-2 ${
               apiStatus === "connected"
@@ -119,10 +117,10 @@ const Dashboard = () => {
             <div
               className={`w-3 h-3 rounded-full mr-3 ${
                 apiStatus === "connected"
-                  ? "bg-green-500 animate-pulse"
+                  ? "bg-green-500"
                   : apiStatus === "disconnected"
                   ? "bg-red-500"
-                  : "bg-yellow-500 animate-pulse"
+                  : "bg-yellow-500"
               }`}></div>
             <span className="text-sm sm:text-base font-bold">
               {apiStatus === "connected"
@@ -135,7 +133,7 @@ const Dashboard = () => {
         </div>
 
         {/* Training Section */}
-        <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 mb-6 border border-white/30 backdrop-blur-xl animate-scaleIn">
+        <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 mb-6 border border-white/30 backdrop-blur-xl">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="mb-4 md:mb-0">
               <div className="flex items-center gap-3 mb-2">
@@ -197,7 +195,7 @@ const Dashboard = () => {
 
           {/* Training Result */}
           {trainResult && (
-            <div className="mt-4 p-4 sm:p-5 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-xl shadow-lg animate-success">
+            <div className="mt-4 p-4 sm:p-5 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-xl shadow-lg">
               <div className="flex items-start gap-3 mb-3">
                 <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg
@@ -249,7 +247,7 @@ const Dashboard = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="mb-6 animate-slideInLeft">
+          <div className="mb-6">
             <div className="glass bg-red-50 border-2 border-red-300 text-red-800 px-4 sm:px-5 py-3 sm:py-4 rounded-2xl shadow-xl">
               <div className="flex items-start">
                 <svg
@@ -277,11 +275,11 @@ const Dashboard = () => {
 
         {/* Loading State */}
         {loading && (
-          <div className="text-center py-12 animate-fadeIn">
+          <div className="text-center py-12">
             <div className="inline-block relative">
-              <div className="w-16 h-16 border-4 border-accent-purple/30 border-t-accent-purple rounded-full animate-spin"></div>
+              <div className="w-16 h-16 border-4 border-accent-purple/30 border-t-accent-purple rounded-full"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-8 h-8 bg-accent-purple rounded-full animate-pulse"></div>
+                <div className="w-8 h-8 bg-accent-purple rounded-full"></div>
               </div>
             </div>
             <p className="mt-4 text-text-primary font-bold text-lg">
@@ -295,7 +293,7 @@ const Dashboard = () => {
           <div>
             <div className="mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="glass rounded-2xl shadow-2xl p-5 sm:p-6 border border-white/30 backdrop-blur-xl card-hover animate-slideInLeft">
+                <div className="glass rounded-2xl shadow-2xl p-5 sm:p-6 border border-white/30 backdrop-blur-xl card-hover">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center shadow-xl">
                       <svg
@@ -319,7 +317,7 @@ const Dashboard = () => {
                     {clusters.total_customers.toLocaleString()}
                   </p>
                 </div>
-                <div className="glass rounded-2xl shadow-2xl p-5 sm:p-6 border border-white/30 backdrop-blur-xl card-hover animate-slideInRight">
+                <div className="glass rounded-2xl shadow-2xl p-5 sm:p-6 border border-white/30 backdrop-blur-xl card-hover">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-xl">
                       <svg
@@ -352,7 +350,7 @@ const Dashboard = () => {
 
         {/* Empty State */}
         {!loading && !clusters && !error && (
-          <div className="glass rounded-2xl shadow-2xl p-8 sm:p-12 text-center border-2 border-white/20 animate-fadeIn">
+          <div className="glass rounded-2xl shadow-2xl p-8 sm:p-12 text-center border-2 border-white/20">
             <div className="animate-float">
               <svg
                 className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 text-purple-400"

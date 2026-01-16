@@ -21,22 +21,32 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md border-b border-gray-200 text-text-primary shadow-2xl sticky top-0 z-50 backdrop-blur-lg border-b border-gray-200">
+    <nav className="bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200 text-text-primary sticky top-0 z-50 relative overflow-hidden">
+      {/* Subtle gradient accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-blue via-accent-purple to-accent-green"></div>
+
       <div className="container mx-auto px-3 sm:px-4">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-accent-blue to-accent-green rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-cool rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 relative">
               <span className="text-white font-extrabold text-lg sm:text-xl">
                 CS
               </span>
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-gradient-cool rounded-xl blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
             </div>
-            <span className="font-bold text-base sm:text-xl hidden md:inline text-text-primary">
-              Customer Segmentation
-            </span>
-            <span className="font-bold text-base md:hidden text-text-primary">
-              CS AI
-            </span>
+            <div className="flex flex-col">
+              <span className="font-bold text-base sm:text-lg text-text-primary group-hover:gradient-text transition-all duration-300 hidden md:inline">
+                Customer Segmentation
+              </span>
+              <span className="font-bold text-base md:hidden text-text-primary group-hover:gradient-text transition-all duration-300">
+                CS AI
+              </span>
+              <span className="text-xs text-text-secondary hidden sm:inline">
+                ML-Powered Analytics
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -46,69 +56,78 @@ const Navbar = () => {
                 {user?.role === "admin" && (
                   <Link
                     to="/admin/dashboard"
-                    className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
+                    className={`px-4 py-2 rounded-xl transition-all text-base font-semibold ${
                       isActive("/admin/dashboard")
-                        ? "bg-accent-orange text-white shadow-lg scale-105"
-                        : "text-text-secondary hover:bg-gray-100 hover:text-accent-orange hover:scale-105"
-                    }`}>
+                        ? "bg-accent-orange shadow-lg"
+                        : "text-text-secondary hover:bg-gray-100 hover:text-accent-orange"
+                    }`}
+                    style={
+                      isActive("/admin/dashboard") ? { color: "#000000" } : {}
+                    }>
                     👑 Admin
                   </Link>
                 )}
 
                 <Link
                   to="/"
-                  className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
+                  className={`px-4 py-2 rounded-xl transition-all text-base font-semibold ${
                     isActive("/")
-                      ? "bg-accent-blue text-white shadow-lg scale-105"
-                      : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue hover:scale-105"
-                  }`}>
+                      ? "bg-accent-blue shadow-lg"
+                      : "text-text-secondary hover:bg-accent-blue/10 hover:text-accent-blue"
+                  }`}
+                  style={isActive("/") ? { color: "#000000" } : {}}>
                   Home
                 </Link>
                 <Link
                   to="/dashboard"
-                  className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
+                  className={`px-4 py-2 rounded-xl transition-all text-base font-semibold ${
                     isActive("/dashboard")
-                      ? "bg-accent-blue text-white shadow-lg scale-105"
-                      : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue hover:scale-105"
-                  }`}>
+                      ? "bg-accent-purple shadow-lg"
+                      : "text-text-secondary hover:bg-accent-purple/10 hover:text-accent-purple"
+                  }`}
+                  style={isActive("/dashboard") ? { color: "#000000" } : {}}>
                   Dashboard
                 </Link>
                 <Link
                   to="/history"
-                  className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
+                  className={`px-4 py-2 rounded-xl transition-all text-base font-semibold ${
                     isActive("/history")
-                      ? "bg-accent-green text-white shadow-lg scale-105"
-                      : "text-text-secondary hover:bg-gray-100 hover:text-accent-green hover:scale-105"
-                  }`}>
+                      ? "bg-accent-green shadow-lg"
+                      : "text-text-secondary hover:bg-accent-green/10 hover:text-accent-green"
+                  }`}
+                  style={isActive("/history") ? { color: "#000000" } : {}}>
                   History
                 </Link>
                 <Link
                   to="/settings"
-                  className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
+                  className={`px-4 py-2 rounded-xl transition-all text-base font-semibold ${
                     isActive("/settings")
-                      ? "bg-accent-blue text-white shadow-lg scale-105"
-                      : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue hover:scale-105"
-                  }`}>
+                      ? "bg-accent-blue shadow-lg"
+                      : "text-text-secondary hover:bg-accent-blue/10 hover:text-accent-blue"
+                  }`}
+                  style={isActive("/settings") ? { color: "#000000" } : {}}>
                   Settings
                 </Link>
               </>
             ) : null}
             <Link
               to="/about"
-              className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
+              className={`px-4 py-2 rounded-xl transition-all text-base font-semibold ${
                 isActive("/about")
-                  ? "bg-accent-blue text-white shadow-lg scale-105"
-                  : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue hover:scale-105"
-              }`}>
+                  ? "bg-accent-blue shadow-lg"
+                  : "text-text-secondary hover:bg-accent-blue/10 hover:text-accent-blue"
+              }`}
+              style={isActive("/about") ? { color: "#000000" } : {}}>
               About
             </Link>
             <Link
               to="/documentation"
-              className={`px-4 py-2 rounded-xl transition-all transform text-base font-semibold ${
+              className={`px-4 py-2 rounded-xl transition-all text-base font-semibold ${
                 isActive("/documentation")
-                  ? "bg-accent-blue text-white shadow-lg scale-105"
-                  : "text-text-secondary hover:bg-gray-100 hover:text-accent-blue hover:scale-105"
-              }`}>
+                  ? "bg-accent-purple shadow-lg"
+                  : "text-text-secondary hover:bg-accent-purple/10 hover:text-accent-purple"
+              }`}
+              style={isActive("/documentation") ? { color: "#000000" } : {}}>
               Docs
             </Link>
 
@@ -141,7 +160,7 @@ const Navbar = () => {
                 </button>
 
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 animate-fadeIn">
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-200 py-2">
                     {user?.role === "admin" && (
                       <Link
                         to="/admin/dashboard"
@@ -168,13 +187,14 @@ const Navbar = () => {
               <div className="flex items-center space-x-2 ml-2">
                 <Link
                   to="/login"
-                  className="px-4 py-2 rounded-xl border border-gray-300 hover:border-accent-blue hover:bg-blue-50 transition-all font-semibold text-text-primary">
+                  className="px-4 py-2 rounded-xl border-2 border-accent-blue/30 hover:border-accent-blue hover:bg-accent-blue/10 transition-all font-semibold text-text-primary hover:text-accent-blue transform hover:scale-105">
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="px-4 py-2 rounded-xl bg-accent-blue hover:bg-blue-600 transition-all font-semibold text-white shadow-md">
-                  Sign Up
+                  className="px-4 py-2 rounded-xl bg-gradient-primary hover:shadow-lg transition-all font-semibold text-white shadow-md transform hover:scale-105 relative overflow-hidden group">
+                  <span className="relative z-10">Sign Up</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent-purple to-accent-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </Link>
               </div>
             )}
@@ -210,7 +230,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="lg:hidden pb-4 animate-fadeIn">
+          <div className="lg:hidden pb-4">
             <div className="flex flex-col space-y-2">
               {isAuthenticated ? (
                 <>

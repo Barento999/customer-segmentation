@@ -44,19 +44,17 @@ const Settings = () => {
     <div className="min-h-screen bg-gray-50 py-4 sm:py-8 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl"></div>
         <div
-          className="absolute bottom-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}></div>
+          className="absolute bottom-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl"></div>
         <div
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}></div>
+          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-3 sm:px-4 max-w-4xl relative z-10">
         {/* Header */}
-        <div className="text-center mb-6 sm:mb-10 animate-fadeIn">
-          <div className="inline-block mb-3 animate-bounce-slow">
+        <div className="text-center mb-6 sm:mb-10">
+          <div className="inline-block mb-3">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-purple rounded-2xl shadow-2xl flex items-center justify-center mx-auto transform hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg"
@@ -89,7 +87,7 @@ const Settings = () => {
         {/* Settings Sections */}
         <div className="space-y-4 sm:space-y-6">
           {/* History Settings */}
-          <div className="glass rounded-2xl shadow-2xl p-5 sm:p-8 border border-white/30 backdrop-blur-xl animate-slideInLeft">
+          <div className="glass rounded-2xl shadow-2xl p-5 sm:p-8 border border-white/30 backdrop-blur-xl">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center shadow-xl">
                 <span className="text-2xl">🕐</span>
@@ -149,8 +147,7 @@ const Settings = () => {
 
           {/* Display Settings */}
           <div
-            className="glass rounded-2xl shadow-2xl p-5 sm:p-8 border-2 border-white/20 animate-fadeIn"
-            style={{ animationDelay: "0.1s" }}>
+            className="glass rounded-2xl shadow-2xl p-5 sm:p-8 border-2 border-white/20">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-2xl">🎨</span>
@@ -213,8 +210,7 @@ const Settings = () => {
 
           {/* Notification Settings */}
           <div
-            className="glass rounded-2xl shadow-2xl p-5 sm:p-8 border-2 border-white/20 animate-slideInRight"
-            style={{ animationDelay: "0.2s" }}>
+            className="glass rounded-2xl shadow-2xl p-5 sm:p-8 border-2 border-white/20">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-2xl">🔔</span>
@@ -249,8 +245,7 @@ const Settings = () => {
 
           {/* Actions */}
           <div
-            className="glass rounded-2xl shadow-2xl p-5 sm:p-8 border-2 border-white/20 animate-scaleIn"
-            style={{ animationDelay: "0.3s" }}>
+            className="glass rounded-2xl shadow-2xl p-5 sm:p-8 border-2 border-white/20">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-2xl">🔧</span>

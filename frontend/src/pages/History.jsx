@@ -42,19 +42,17 @@ const History = () => {
     <div className="min-h-screen bg-gray-50 py-4 sm:py-8 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"></div>
         <div
-          className="absolute bottom-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}></div>
+          className="absolute bottom-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl"></div>
         <div
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}></div>
+          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-3 sm:px-4 max-w-6xl relative z-10">
         {/* Header */}
-        <div className="text-center mb-6 sm:mb-10 animate-fadeIn">
-          <div className="inline-block mb-3 animate-bounce-slow">
+        <div className="text-center mb-6 sm:mb-10">
+          <div className="inline-block mb-3">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-secondary rounded-2xl shadow-2xl flex items-center justify-center mx-auto transform hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg"
@@ -80,7 +78,7 @@ const History = () => {
 
         {/* Actions */}
         {history.length > 0 && (
-          <div className="flex justify-end mb-4 animate-slideInRight">
+          <div className="flex justify-end mb-4">
             <button
               onClick={clearHistory}
               className="px-4 py-2 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform">
@@ -91,7 +89,7 @@ const History = () => {
 
         {/* History List */}
         {history.length === 0 ? (
-          <div className="glass rounded-2xl shadow-2xl p-8 sm:p-12 text-center border-2 border-white/20 animate-fadeIn">
+          <div className="glass rounded-2xl shadow-2xl p-8 sm:p-12 text-center border-2 border-white/20">
             <div className="animate-float">
               <svg
                 className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 text-purple-400"
@@ -125,7 +123,7 @@ const History = () => {
               return (
                 <div
                   key={index}
-                  className="glass rounded-2xl shadow-2xl p-4 sm:p-6 border-2 border-white/20 animate-slideInLeft card-hover"
+                  className="glass rounded-2xl shadow-2xl p-4 sm:p-6 border-2 border-white/20 card-hover"
                   style={{ animationDelay: `${index * 0.05}s` }}>
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div className="flex-grow">

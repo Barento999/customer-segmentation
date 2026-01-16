@@ -57,19 +57,15 @@ const Home = () => {
     <div className="min-h-screen bg-gray-50 py-4 sm:py-8 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"></div>
-        <div
-          className="absolute bottom-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}></div>
-        <div
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-3 sm:px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-4 sm:mb-8 animate-fadeIn">
-          <div className="inline-block mb-3 animate-bounce-slow">
+        <div className="text-center mb-4 sm:mb-8">
+          <div className="inline-block mb-3">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-cool rounded-2xl shadow-2xl flex items-center justify-center mx-auto transform hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg"
@@ -95,7 +91,7 @@ const Home = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="max-w-2xl mx-auto mb-4 sm:mb-6 animate-slideInLeft">
+          <div className="max-w-2xl mx-auto mb-4 sm:mb-6">
             <div className="glass bg-red-50 border-2 border-red-300 text-red-800 px-4 sm:px-5 py-3 sm:py-4 rounded-2xl shadow-xl">
               <div className="flex items-start">
                 <svg
@@ -148,7 +144,7 @@ const Home = () => {
               <ResultCard result={result} />
             ) : (
               <div className="glass rounded-2xl shadow-2xl p-6 sm:p-8 h-full flex items-center justify-center">
-                <div className="text-center animate-float">
+                <div className="text-center">
                   <div className="relative">
                     <svg
                       className="w-20 h-20 sm:w-28 sm:h-28 mx-auto mb-4 text-accent-purple opacity-80"
@@ -178,7 +174,7 @@ const Home = () => {
 
         {/* Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto mt-6 sm:mt-8">
-          <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 card-hover animate-slideInLeft border border-white/30 backdrop-blur-xl">
+          <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 card-hover border border-white/30 backdrop-blur-xl">
             <div className="flex items-center mb-3">
               <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mr-3 shadow-lg">
                 <svg
@@ -204,9 +200,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div
-            className="glass rounded-2xl shadow-2xl p-4 sm:p-6 card-hover animate-fadeIn border border-white/30 backdrop-blur-xl"
-            style={{ animationDelay: "0.1s" }}>
+          <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 card-hover border border-white/30 backdrop-blur-xl">
             <div className="flex items-center mb-3">
               <div className="w-12 h-12 bg-gradient-secondary rounded-xl flex items-center justify-center mr-3 shadow-lg">
                 <svg
@@ -232,9 +226,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div
-            className="glass rounded-2xl shadow-2xl p-4 sm:p-6 card-hover-purple animate-slideInRight border border-white/30 backdrop-blur-xl"
-            style={{ animationDelay: "0.2s" }}>
+          <div className="glass rounded-2xl shadow-2xl p-4 sm:p-6 card-hover-purple border border-white/30 backdrop-blur-xl">
             <div className="flex items-center mb-3">
               <div className="w-12 h-12 bg-gradient-purple rounded-xl flex items-center justify-center mr-3 shadow-lg">
                 <svg

@@ -113,46 +113,44 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="rounded-full h-16 w-16 border-4 border-accent-orange/30 border-t-accent-orange"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 py-8 px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gray-50 py-8 px-4 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl animate-float"></div>
-        <div
-          className="absolute bottom-0 left-0 w-96 h-96 bg-red-100/30 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}></div>
-        <div
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-yellow-100/30 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-red/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-4xl">👑</span>
-                <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-yellow-200 drop-shadow-2xl">
+                <div className="w-12 h-12 bg-gradient-warm rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-2xl">👑</span>
+                </div>
+                <h1 className="text-3xl sm:text-4xl font-bold gradient-text">
                   Admin Dashboard
                 </h1>
               </div>
-              <p className="text-orange-100 drop-shadow-lg">
+              <p className="text-text-secondary">
                 Welcome back,{" "}
-                <span className="font-semibold">
+                <span className="font-semibold text-text-primary">
                   {user?.full_name || user?.username}
                 </span>
               </p>
             </div>
             <button
               onClick={() => setShowAddUser(true)}
-              className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all font-semibold shadow-xl hover:scale-105 transform">
+              className="px-6 py-3 bg-gradient-secondary text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-md transform hover:scale-105">
               ➕ Add User
             </button>
           </div>
@@ -161,55 +159,63 @@ const AdminDashboard = () => {
         {/* Message */}
         {message.text && (
           <div
-            className={`mb-6 p-4 rounded-lg ${
+            className={`mb-6 p-4 rounded-xl shadow-lg border-2 ${
               message.type === "success"
-                ? "bg-green-100 border border-green-400 text-green-700"
-                : "bg-red-100 border border-red-400 text-red-700"
+                ? "bg-green-50 border-accent-green text-green-800"
+                : "bg-red-50 border-accent-red text-red-800"
             }`}>
-            {message.text}
-            <button
-              onClick={() => setMessage({ type: "", text: "" })}
-              className="float-right font-bold">
-              ×
-            </button>
+            <div className="flex items-center justify-between">
+              <span>{message.text}</span>
+              <button
+                onClick={() => setMessage({ type: "", text: "" })}
+                className="font-bold text-xl hover:opacity-70">
+                ×
+              </button>
+            </div>
           </div>
         )}
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white shadow-lg">
+          <div className="glass bg-gradient-primary rounded-xl p-6 text-white shadow-lg card-hover border border-white/20">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-blue-100 text-sm font-medium">Total Users</p>
+                <p className="text-white/80 text-sm font-medium">Total Users</p>
                 <p className="text-4xl font-bold mt-2">{stats.totalUsers}</p>
               </div>
-              <span className="text-5xl opacity-50">👥</span>
+              <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center">
+                <span className="text-4xl">👥</span>
+              </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-white shadow-lg">
+          <div className="glass bg-gradient-secondary rounded-xl p-6 text-white shadow-lg card-hover border border-white/20">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-green-100 text-sm font-medium">
+                <p className="text-white/80 text-sm font-medium">
                   Total Predictions
                 </p>
                 <p className="text-4xl font-bold mt-2">
                   {stats.totalPredictions}
                 </p>
               </div>
-              <span className="text-5xl opacity-50">📊</span>
+              <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center">
+                <span className="text-4xl">📊</span>
+              </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-6 text-white shadow-lg">
+          <div className="glass bg-gradient-purple rounded-xl p-6 text-white shadow-lg card-hover border border-white/20">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-purple-100 text-sm font-medium">
+                <p className="text-white/80 text-sm font-medium">
                   Total Profiles
                 </p>
                 <p className="text-4xl font-bold mt-2">{stats.totalProfiles}</p>
               </div>
-              <span className="text-5xl opacity-50">📋</span>
+              <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center">
+                <span className="text-4xl">📋</span>
+              </div>
             </div>
           </div>
         </div>
@@ -304,13 +310,13 @@ const AdminDashboard = () => {
                 <div className="flex gap-3 pt-4">
                   <button
                     type="submit"
-                    className="flex-1 py-2 px-4 bg-green-600 text-white rounded-lg hover:bg-green-700 font-semibold">
+                    className="flex-1 py-3 px-4 bg-gradient-secondary text-white rounded-xl hover:shadow-lg font-semibold transition-all">
                     ✅ Add User
                   </button>
                   <button
                     type="button"
                     onClick={() => setShowAddUser(false)}
-                    className="flex-1 py-2 px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 font-semibold">
+                    className="flex-1 py-3 px-4 bg-gray-200 text-text-primary rounded-xl hover:bg-gray-300 font-semibold transition-all">
                     ❌ Cancel
                   </button>
                 </div>
@@ -321,33 +327,35 @@ const AdminDashboard = () => {
 
         {/* Users Table */}
         <div className="glass rounded-2xl shadow-2xl p-6 border border-white/30 backdrop-blur-xl">
-          <h2 className="text-2xl font-bold text-white mb-4 drop-shadow-lg">
-            User Management
+          <h2 className="text-2xl font-bold text-text-primary mb-6 flex items-center gap-2">
+            <span>👥</span> User Management
           </h2>
 
           {users.length === 0 ? (
-            <p className="text-gray-500 text-center py-8">No users found</p>
+            <p className="text-text-secondary text-center py-8">
+              No users found
+            </p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-left py-3 px-4 font-semibold text-text-primary">
                       Username
                     </th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-left py-3 px-4 font-semibold text-text-primary">
                       Email
                     </th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-left py-3 px-4 font-semibold text-text-primary">
                       Full Name
                     </th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-left py-3 px-4 font-semibold text-text-primary">
                       Role
                     </th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-left py-3 px-4 font-semibold text-text-primary">
                       Status
                     </th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-left py-3 px-4 font-semibold text-text-primary">
                       Actions
                     </th>
                   </tr>
@@ -356,10 +364,16 @@ const AdminDashboard = () => {
                   {users.map((u) => (
                     <tr
                       key={u.id}
-                      className="border-b border-gray-100 hover:bg-gray-50">
-                      <td className="py-3 px-4">{u.username}</td>
-                      <td className="py-3 px-4">{u.email}</td>
-                      <td className="py-3 px-4">{u.full_name || "-"}</td>
+                      className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
+                      <td className="py-3 px-4 text-text-primary font-medium">
+                        {u.username}
+                      </td>
+                      <td className="py-3 px-4 text-text-secondary">
+                        {u.email}
+                      </td>
+                      <td className="py-3 px-4 text-text-secondary">
+                        {u.full_name || "-"}
+                      </td>
                       <td className="py-3 px-4">
                         <select
                           value={u.role}
@@ -367,14 +381,14 @@ const AdminDashboard = () => {
                             handleChangeRole(u.id, e.target.value)
                           }
                           disabled={u.id === user?.id}
-                          className={`px-3 py-1 rounded-lg text-xs font-semibold border border-gray-300 focus:ring-2 focus:ring-blue-500 ${
+                          className={`px-3 py-1 rounded-lg text-xs font-semibold border-2 focus:ring-2 focus:ring-accent-blue ${
                             u.id === user?.id
-                              ? "bg-gray-100 cursor-not-allowed"
-                              : "bg-white hover:bg-gray-50"
+                              ? "bg-gray-100 cursor-not-allowed border-gray-300"
+                              : "bg-white hover:bg-gray-50 border-gray-300"
                           } ${
                             u.role === "admin"
-                              ? "text-red-700"
-                              : "text-gray-700"
+                              ? "text-accent-orange"
+                              : "text-text-primary"
                           }`}>
                           <option value="user">User</option>
                           <option value="admin">Admin</option>
@@ -387,20 +401,20 @@ const AdminDashboard = () => {
                           }
                           className={`px-3 py-1 rounded-full text-xs font-semibold hover:opacity-80 transition-opacity ${
                             u.is_active
-                              ? "bg-green-100 text-green-700"
-                              : "bg-gray-100 text-gray-700"
+                              ? "bg-accent-green/10 text-accent-green border-2 border-accent-green/20"
+                              : "bg-gray-100 text-text-secondary border-2 border-gray-300"
                           }`}>
-                          {u.is_active ? "Active" : "Inactive"}
+                          {u.is_active ? "✓ Active" : "○ Inactive"}
                         </button>
                       </td>
                       <td className="py-3 px-4">
                         <button
                           onClick={() => handleDeleteUser(u.id, u.username)}
                           disabled={u.id === user?.id}
-                          className={`px-3 py-1 rounded-lg text-xs font-semibold ${
+                          className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
                             u.id === user?.id
                               ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                              : "bg-red-100 text-red-700 hover:bg-red-200"
+                              : "bg-accent-red/10 text-accent-red hover:bg-accent-red/20 border-2 border-accent-red/20"
                           }`}>
                           🗑️ Delete
                         </button>
