@@ -60,32 +60,21 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"></div>
-        <div
-          className="absolute bottom-0 right-0 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}></div>
-        <div
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}></div>
-      </div>
-
-      <div className="max-w-md w-full relative z-10">
-        <div className="text-center mb-8">
-          <div className="inline-block p-4 bg-gradient-to-br from-purple-500 to-pink-500 backdrop-blur-lg rounded-2xl mb-4 shadow-2xl transform hover:scale-110 transition-transform duration-300">
-            <span className="text-6xl">✨</span>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
+        <div className="text-center">
+          <div className="inline-block p-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mb-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <span className="text-5xl">✨</span>
           </div>
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-200 mb-2 drop-shadow-2xl">
+          <h2 className="text-4xl font-extrabold text-gray-900 mb-2">
             Create Account
           </h2>
-          <p className="text-blue-100 text-lg drop-shadow-lg">
+          <p className="text-gray-600 text-lg">
             Join us and start analyzing customers
           </p>
         </div>
 
-        <div className="glass rounded-2xl shadow-2xl p-8 border border-white/30 backdrop-blur-xl">
+        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
               <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
@@ -185,10 +174,10 @@ const Register = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full py-3 px-4 rounded-xl font-bold text-white text-lg shadow-xl transition-all transform ${
+              className={`w-full py-3 px-4 rounded-xl font-bold text-white text-lg shadow-lg transition-all transform ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 hover:scale-105 hover:shadow-2xl"
+                  : "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 hover:scale-[1.02] hover:shadow-xl"
               }`}>
               {loading ? "Creating account..." : "✨ Create Account"}
             </button>

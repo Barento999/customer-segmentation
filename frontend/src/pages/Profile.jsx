@@ -101,32 +101,19 @@ const Profile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"></div>
-        <div
-          className="absolute bottom-0 right-0 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}></div>
-        <div
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-orange/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}></div>
-      </div>
-
-      <div className="container mx-auto max-w-4xl relative z-10">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-8 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-8">
-          <div className="inline-block p-4 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mb-4 shadow-2xl transform hover:scale-110 transition-transform duration-300">
-            <span className="text-6xl">👤</span>
+          <div className="inline-block p-4 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mb-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <span className="text-5xl">👤</span>
           </div>
-          <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-200 to-pink-200 mb-2 drop-shadow-2xl">
+          <h1 className="text-4xl font-extrabold text-gray-900 mb-2">
             My Profile
           </h1>
-          <p className="text-blue-100 text-lg drop-shadow-lg">
-            Manage your account settings
-          </p>
+          <p className="text-gray-600 text-lg">Manage your account settings</p>
         </div>
 
-        <div className="glass rounded-2xl shadow-2xl p-6 mb-6 border border-white/30 backdrop-blur-xl">
+        <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 mb-6 border border-gray-100">
           {message.text && (
             <div
               className={`mb-4 p-4 rounded-lg ${
@@ -158,7 +145,7 @@ const Profile = () => {
             {!editing && (
               <button
                 onClick={() => setEditing(true)}
-                className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold">
+                className="px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all font-semibold shadow-md hover:shadow-lg transform hover:scale-105">
                 ✏️ Edit Profile
               </button>
             )}
@@ -223,10 +210,10 @@ const Profile = () => {
                 <button
                   type="submit"
                   disabled={saving}
-                  className={`flex-1 py-2 px-4 rounded-lg font-semibold text-white ${
+                  className={`flex-1 py-3 px-4 rounded-lg font-semibold text-white shadow-md transition-all ${
                     saving
                       ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-green-600 hover:bg-green-700"
+                      : "bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 hover:shadow-lg transform hover:scale-[1.02]"
                   }`}>
                   {saving ? "Saving..." : "💾 Save Changes"}
                 </button>
@@ -234,7 +221,7 @@ const Profile = () => {
                   type="button"
                   onClick={cancelEdit}
                   disabled={saving}
-                  className="flex-1 py-2 px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 font-semibold">
+                  className="flex-1 py-3 px-4 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-semibold shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02]">
                   ❌ Cancel
                 </button>
               </div>

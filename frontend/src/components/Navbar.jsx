@@ -2,7 +2,7 @@
  * Navigation bar component
  */
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const { user, isAuthenticated, logout } = useAuth();
+  const userMenuRef = useRef(null);
 
   const isActive = (path) => {
     return location.pathname === path;
@@ -20,12 +21,29 @@ const Navbar = () => {
     setUserMenuOpen(false);
   };
 
+  // Close user menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setUserMenuOpen(false);
+      }
+    };
+
+    if (userMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [userMenuOpen]);
+
   return (
-    <nav className="bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200 text-text-primary sticky top-0 z-50 relative overflow-hidden">
+    <nav className="bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200 text-text-primary sticky top-0 z-50">
       {/* Subtle gradient accent line */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-blue via-accent-purple to-accent-green"></div>
 
-      <div className="container mx-auto px-3 sm:px-4">
+      <div className="container mx-auto px-3 sm:px-4 relative">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
@@ -133,7 +151,7 @@ const Navbar = () => {
 
             {/* User Menu */}
             {isAuthenticated ? (
-              <div className="relative ml-2">
+              <div className="relative ml-2" ref={userMenuRef}>
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                   className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-all text-text-primary">
@@ -160,7 +178,7 @@ const Navbar = () => {
                 </button>
 
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-200 py-2">
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 z-50">
                     {user?.role === "admin" && (
                       <Link
                         to="/admin/dashboard"

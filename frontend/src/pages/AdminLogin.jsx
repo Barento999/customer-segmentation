@@ -45,32 +45,19 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-red-50 py-12 px-4 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl animate-float"></div>
-        <div
-          className="absolute bottom-0 right-0 w-96 h-96 bg-red-100/30 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}></div>
-        <div
-          className="absolute top-1/2 left-1/2 w-96 h-96 bg-yellow-100/30 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}></div>
-      </div>
-
-      <div className="max-w-md w-full relative z-10">
-        <div className="text-center mb-8">
-          <div className="inline-block p-4 bg-gradient-to-br from-orange-500 to-red-500 backdrop-blur-lg rounded-2xl mb-4 shadow-2xl transform hover:scale-110 transition-transform duration-300">
-            <span className="text-6xl">👑</span>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
+        <div className="text-center">
+          <div className="inline-block p-4 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl mb-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <span className="text-5xl">👑</span>
           </div>
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-100 to-yellow-100 mb-2 drop-shadow-2xl">
+          <h2 className="text-4xl font-extrabold text-gray-900 mb-2">
             Admin Portal
           </h2>
-          <p className="text-orange-100 text-lg drop-shadow-lg">
-            Administrator Access Only
-          </p>
+          <p className="text-gray-600 text-lg">Administrator Access Only</p>
         </div>
 
-        <div className="glass rounded-2xl shadow-2xl p-8 border border-white/30 backdrop-blur-xl">
+        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
               <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
@@ -117,10 +104,10 @@ const AdminLogin = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full py-3 px-4 rounded-xl font-bold text-white text-lg shadow-xl transition-all transform ${
+              className={`w-full py-3 px-4 rounded-xl font-bold text-white text-lg shadow-lg transition-all transform ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 hover:scale-105 hover:shadow-2xl"
+                  : "bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 hover:scale-[1.02] hover:shadow-xl"
               }`}>
               {loading ? "Verifying..." : "👑 Admin Sign In"}
             </button>
@@ -139,11 +126,11 @@ const AdminLogin = () => {
         </div>
 
         <div className="mt-6 text-center">
-          <div className="glass rounded-xl p-4 border border-white/30 backdrop-blur-xl shadow-xl">
-            <p className="text-orange-100 text-sm mb-2 font-semibold drop-shadow">
+          <div className="bg-orange-50 rounded-xl p-4 border border-orange-200 shadow-md">
+            <p className="text-orange-900 text-sm mb-2 font-semibold">
               ⚠️ Authorized Personnel Only
             </p>
-            <p className="text-orange-200 text-xs drop-shadow">
+            <p className="text-orange-700 text-xs">
               This portal is restricted to administrators
             </p>
           </div>
