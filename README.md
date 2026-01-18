@@ -2,6 +2,13 @@
 
 A full-stack machine learning application for customer segmentation using K-Means clustering with JWT authentication, role-based access control, and interactive visualizations.
 
+> **📚 Complete Documentation Available**:
+>
+> - **[USER_GUIDE.md](USER_GUIDE.md)** - Step-by-step user instructions
+> - **[HOW_SEGMENTATION_WORKS.md](HOW_SEGMENTATION_WORKS.md)** - Understanding the ML
+> - **[COMPLETE_PROJECT_DOCUMENTATION.md](COMPLETE_PROJECT_DOCUMENTATION.md)** - Master technical documentation
+> - **[ALL_DOCUMENTATION.md](ALL_DOCUMENTATION.md)** - Complete documentation index
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -13,6 +20,7 @@ A full-stack machine learning application for customer segmentation using K-Mean
 - [Testing](#testing)
 - [API Documentation](#api-documentation)
 - [Deployment](#deployment)
+- [Documentation](#documentation)
 
 ## 🎯 Overview
 
@@ -436,6 +444,33 @@ npm run build
 6. Regular security updates
 7. Use strong passwords
 8. Enable CSRF protection
+
+## 📚 Documentation
+
+### For Users
+
+- **[USER_GUIDE.md](USER_GUIDE.md)** - Complete user guide with step-by-step instructions
+- **[HOW_SEGMENTATION_WORKS.md](HOW_SEGMENTATION_WORKS.md)** - Understanding customer segmentation and ML
+
+### For Developers
+
+- **[COMPLETE_PROJECT_DOCUMENTATION.md](COMPLETE_PROJECT_DOCUMENTATION.md)** - Master technical documentation (43KB)
+- **[backend/README.md](backend/README.md)** - Backend setup, API endpoints, and tools
+- **[frontend/README.md](frontend/README.md)** - Frontend setup, components, and testing
+- **[TOOLS_AND_TECHNOLOGIES.md](TOOLS_AND_TECHNOLOGIES.md)** - Complete tools reference
+
+### For Reference
+
+- **[ALL_DOCUMENTATION.md](ALL_DOCUMENTATION.md)** - Complete index of all 48+ documentation files
+- **[DOCUMENTATION_SUMMARY.md](DOCUMENTATION_SUMMARY.md)** - Documentation overview and statistics
+- **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** - Navigation guide
+
+### Quick Links
+
+- [Setup Guide](SETUP_GUIDE.md) - Detailed installation instructions
+- [Testing Guide](TESTING_GUIDE.md) - Complete testing documentation
+- [Authentication Guide](AUTH_SYSTEM_COMPLETE.md) - Auth system documentation
+- [API Documentation](http://localhost:8000/docs) - Interactive Swagger UI
 
 ## 📝 License
 
