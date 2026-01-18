@@ -3,11 +3,13 @@
  */
 import { useState, useEffect } from "react";
 import ClusterChart from "../components/ClusterChart";
+import MatplotlibCharts from "../components/MatplotlibCharts";
 import { trainModel, getClusters, healthCheck } from "../services/api";
 
 const Dashboard = () => {
   const [clusters, setClusters] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [chartMode, setChartMode] = useState("interactive"); // "interactive" or "static"
   const [training, setTraining] = useState(false);
   const [error, setError] = useState(null);
   const [trainResult, setTrainResult] = useState(null);
@@ -39,7 +41,7 @@ const Dashboard = () => {
     } catch (err) {
       setError(
         err.response?.data?.detail ||
-          "Failed to load clusters. Train the model first."
+          "Failed to load clusters. Train the model first.",
       );
     } finally {
       setLoading(false);
@@ -71,10 +73,8 @@ const Dashboard = () => {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-accent-purple/5 rounded-full blur-3xl"></div>
-        <div
-          className="absolute bottom-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl"></div>
-        <div
-          className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent-green/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-3 sm:px-4 relative z-10">
@@ -111,23 +111,23 @@ const Dashboard = () => {
               apiStatus === "connected"
                 ? "glass border-green-300 text-green-800"
                 : apiStatus === "disconnected"
-                ? "glass border-red-300 text-red-800"
-                : "glass border-yellow-300 text-yellow-800"
+                  ? "glass border-red-300 text-red-800"
+                  : "glass border-yellow-300 text-yellow-800"
             }`}>
             <div
               className={`w-3 h-3 rounded-full mr-3 ${
                 apiStatus === "connected"
                   ? "bg-green-500"
                   : apiStatus === "disconnected"
-                  ? "bg-red-500"
-                  : "bg-yellow-500"
+                    ? "bg-red-500"
+                    : "bg-yellow-500"
               }`}></div>
             <span className="text-sm sm:text-base font-bold">
               {apiStatus === "connected"
                 ? "✅ API Connected"
                 : apiStatus === "disconnected"
-                ? "❌ API Disconnected"
-                : "⏳ Checking API..."}
+                  ? "❌ API Disconnected"
+                  : "⏳ Checking API..."}
             </span>
           </div>
         </div>
@@ -344,7 +344,63 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <ClusterChart clusters={clusters.clusters} />
+            {/* Chart Mode Switcher */}
+            <div className="mt-8 mb-6">
+              <div className="glass rounded-2xl shadow-2xl p-4 border border-white/30 backdrop-blur-xl">
+                <div className="flex items-center justify-between flex-wrap gap-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-1">
+                      📊 Visualization Mode
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      Choose between interactive charts or static images
+                    </p>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setChartMode("interactive")}
+                      className={`px-6 py-3 rounded-xl font-bold transition-all transform ${
+                        chartMode === "interactive"
+                          ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-105"
+                          : "bg-white text-gray-700 border-2 border-gray-300 hover:border-purple-400"
+                      }`}>
+                      🎯 Interactive
+                    </button>
+                    <button
+                      onClick={() => setChartMode("static")}
+                      className={`px-6 py-3 rounded-xl font-bold transition-all transform ${
+                        chartMode === "static"
+                          ? "bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg scale-105"
+                          : "bg-white text-gray-700 border-2 border-gray-300 hover:border-orange-400"
+                      }`}>
+                      📸 Static Images
+                    </button>
+                  </div>
+                </div>
+
+                {/* Mode Info */}
+                <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  {chartMode === "interactive" ? (
+                    <p className="text-sm text-blue-800">
+                      <strong>Interactive Mode:</strong> Hover over charts to
+                      see values, zoom, and interact with data in real-time.
+                    </p>
+                  ) : (
+                    <p className="text-sm text-orange-800">
+                      <strong>Static Images Mode:</strong> High-quality
+                      matplotlib charts perfect for reports and presentations.
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Charts Display */}
+            {chartMode === "interactive" ? (
+              <ClusterChart clusters={clusters.clusters} />
+            ) : (
+              <MatplotlibCharts />
+            )}
           </div>
         )}
 

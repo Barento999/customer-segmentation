@@ -2,7 +2,7 @@
 
 Quick reference to all essential documentation.
 
-## 📚 Essential Documentation (8 files)
+## 📚 Essential Documentation (9 files)
 
 ### 1. **README.md** ⭐ Start Here
 
@@ -36,6 +36,10 @@ Complete authentication system documentation with JWT and role-based access.
 
 Complete testing documentation for unit, integration, and E2E tests.
 
+### 9. **MATPLOTLIB_SETUP.md**
+
+Setup guide for matplotlib chart generation on the backend.
+
 ---
 
 ## 🎯 Quick Navigation
@@ -64,6 +68,9 @@ Complete testing documentation for unit, integration, and E2E tests.
 **Running tests?**
 → Check **TESTING_GUIDE.md**
 
+**Setting up matplotlib charts?**
+→ Read **MATPLOTLIB_SETUP.md**
+
 ---
 
 ## 📁 Additional Documentation
@@ -73,4 +80,4 @@ Complete testing documentation for unit, integration, and E2E tests.
 
 ---
 
-**Total Documentation**: 10 essential files (8 root + 2 subdirectory)
+**Total Documentation**: 11 essential files (9 root + 2 subdirectory)

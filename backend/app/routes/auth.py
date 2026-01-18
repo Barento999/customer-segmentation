@@ -2,6 +2,8 @@
 Authentication routes
 """
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordRequestForm
+
 from sqlalchemy.orm import Session
 from datetime import timedelta
 from app.database import get_db, User
@@ -60,9 +62,9 @@ async def register(user_data: UserCreate, db: Session = Depends(get_db)):
 
 
 @router.post("/login", response_model=LoginResponse)
-async def login(login_data: LoginRequest, db: Session = Depends(get_db)):
+async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     """Login user and return JWT token"""
-    user = authenticate_user(db, login_data.username, login_data.password)
+    user = authenticate_user(db, form_data.username, form_data.password)
     
     if not user:
         raise HTTPException(

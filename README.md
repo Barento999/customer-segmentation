@@ -4,10 +4,10 @@ A full-stack machine learning application for customer segmentation using K-Mean
 
 > **📚 Complete Documentation Available**:
 >
-> - **[USER_GUIDE.md](USER_GUIDE.md)** - Step-by-step user instructions
-> - **[HOW_SEGMENTATION_WORKS.md](HOW_SEGMENTATION_WORKS.md)** - Understanding the ML
-> - **[COMPLETE_PROJECT_DOCUMENTATION.md](COMPLETE_PROJECT_DOCUMENTATION.md)** - Master technical documentation
-> - **[ALL_DOCUMENTATION.md](ALL_DOCUMENTATION.md)** - Complete documentation index
+> - **[docs/USER_GUIDE.md](docs/USER_GUIDE.md)** - Step-by-step user instructions
+> - **[docs/HOW_SEGMENTATION_WORKS.md](docs/HOW_SEGMENTATION_WORKS.md)** - Understanding the ML
+> - **[docs/COMPLETE_PROJECT_DOCUMENTATION.md](docs/COMPLETE_PROJECT_DOCUMENTATION.md)** - Master technical documentation
+> - **[docs/DOCS_INDEX.md](docs/DOCS_INDEX.md)** - Complete documentation index
 
 ## 📋 Table of Contents
 
@@ -449,27 +449,23 @@ npm run build
 
 ### For Users
 
-- **[USER_GUIDE.md](USER_GUIDE.md)** - Complete user guide with step-by-step instructions
-- **[HOW_SEGMENTATION_WORKS.md](HOW_SEGMENTATION_WORKS.md)** - Understanding customer segmentation and ML
+- **[docs/USER_GUIDE.md](docs/USER_GUIDE.md)** - Complete user guide with step-by-step instructions
+- **[docs/HOW_SEGMENTATION_WORKS.md](docs/HOW_SEGMENTATION_WORKS.md)** - Understanding customer segmentation and ML
 
 ### For Developers
 
-- **[COMPLETE_PROJECT_DOCUMENTATION.md](COMPLETE_PROJECT_DOCUMENTATION.md)** - Master technical documentation (43KB)
+- **[docs/COMPLETE_PROJECT_DOCUMENTATION.md](docs/COMPLETE_PROJECT_DOCUMENTATION.md)** - Master technical documentation
 - **[backend/README.md](backend/README.md)** - Backend setup, API endpoints, and tools
 - **[frontend/README.md](frontend/README.md)** - Frontend setup, components, and testing
-- **[TOOLS_AND_TECHNOLOGIES.md](TOOLS_AND_TECHNOLOGIES.md)** - Complete tools reference
+- **[docs/TOOLS_AND_TECHNOLOGIES.md](docs/TOOLS_AND_TECHNOLOGIES.md)** - Complete tools reference
 
-### For Reference
+### Additional Guides
 
-- **[ALL_DOCUMENTATION.md](ALL_DOCUMENTATION.md)** - Complete index of all 48+ documentation files
-- **[DOCUMENTATION_SUMMARY.md](DOCUMENTATION_SUMMARY.md)** - Documentation overview and statistics
-- **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** - Navigation guide
-
-### Quick Links
-
-- [Setup Guide](SETUP_GUIDE.md) - Detailed installation instructions
-- [Testing Guide](TESTING_GUIDE.md) - Complete testing documentation
-- [Authentication Guide](AUTH_SYSTEM_COMPLETE.md) - Auth system documentation
+- **[docs/DOCS_INDEX.md](docs/DOCS_INDEX.md)** - Complete documentation index
+- **[docs/TESTING_GUIDE.md](docs/TESTING_GUIDE.md)** - Complete testing documentation
+- **[docs/AUTH_SYSTEM_COMPLETE.md](docs/AUTH_SYSTEM_COMPLETE.md)** - Auth system documentation
+- **[docs/HYBRID_CHARTS_GUIDE.md](docs/HYBRID_CHARTS_GUIDE.md)** - Interactive & static charts guide
+- **[docs/MATPLOTLIB_SETUP.md](docs/MATPLOTLIB_SETUP.md)** - Matplotlib charts setup
 - [API Documentation](http://localhost:8000/docs) - Interactive Swagger UI
 
 ## 📝 License

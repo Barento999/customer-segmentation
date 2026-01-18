@@ -15,6 +15,7 @@ from app.model import ml_model
 from app.database import init_db, get_db, PredictionHistory, User
 from app.auth import get_current_active_user
 from app.routes import auth, users, profiles, admin
+from app.charts import generate_cluster_charts, generate_elbow_chart
 
 # Initialize database
 init_db()
@@ -167,6 +168,57 @@ async def get_elbow_data(current_user: User = Depends(get_current_active_user)):
         return elbow_data
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to get elbow data: {str(e)}")
+
+
+@app.get("/charts/clusters")
+async def get_cluster_charts(current_user: User = Depends(get_current_active_user)):
+    """
+    Get cluster visualization charts as base64 encoded images
+    Requires authentication
+    """
+    try:
+        # Load models if not already loaded
+        if ml_model.kmeans is None:
+            loaded = ml_model.load_models()
+            if not loaded:
+                raise HTTPException(
+                    status_code=400,
+                    detail="Model not trained. Please train the model first using /train endpoint"
+                )
+        
+        # Get cluster statistics
+        stats = ml_model.get_cluster_statistics()
+        
+        # Generate charts
+        charts = generate_cluster_charts(stats)
+        
+        return {
+            "charts": charts,
+            "total_customers": stats['total_customers'],
+            "n_clusters": stats['n_clusters']
+        }
+    
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to generate charts: {str(e)}")
+
+
+@app.get("/charts/elbow")
+async def get_elbow_chart(current_user: User = Depends(get_current_active_user)):
+    """
+    Get elbow method chart as base64 encoded image
+    Requires authentication
+    """
+    try:
+        elbow_data = ml_model.get_elbow_data()
+        chart = generate_elbow_chart(elbow_data)
+        
+        return {
+            "chart": chart,
+            "optimal_k": elbow_data['optimal_k']
+        }
+    
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to generate elbow chart: {str(e)}")
 
 
 @app.get("/history")

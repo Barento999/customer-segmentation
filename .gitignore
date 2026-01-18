@@ -192,3 +192,52 @@ yarn-error.log*
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# Matplotlib generated charts (temporary)
+*.png
+!frontend/public/*.png
+
+# Backup and temporary documentation
+*.md.bak
+*_BACKUP.md
+*_OLD.md
+*_TEMP.md
+
+# System files
+*.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Windows shortcuts
+*.lnk
+
+# macOS
+.AppleDouble
+.LSOverride
+._*
+
+# Thumbnails
+._*
+.Spotlight-V100
+.Trashes
+
+# Archives
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# Large data files
+*.csv.gz
+*.json.gz
+*.parquet
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so

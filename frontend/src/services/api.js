@@ -25,7 +25,7 @@ api.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // Add response interceptor to handle auth errors
@@ -42,7 +42,7 @@ api.interceptors.response.use(
       }
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 /**
@@ -137,7 +137,16 @@ export const getPredictionHistory = async (skip = 0, limit = 50) => {
  */
 export const login = async (credentials) => {
   try {
-    const response = await api.post("/auth/login", credentials);
+    // FastAPI OAuth2PasswordRequestForm expects form data, not JSON
+    const formData = new URLSearchParams();
+    formData.append("username", credentials.username);
+    formData.append("password", credentials.password);
+
+    const response = await api.post("/auth/login", formData, {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Login failed:", error);

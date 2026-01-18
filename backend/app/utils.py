@@ -43,7 +43,10 @@ def get_cluster_name(cluster_id, cluster_centers, feature_names):
         1: "High Value",
         2: "Average Spender",
         3: "Premium Customer",
-        4: "Occasional Buyer"
+        4: "Occasional Buyer",
+        5: "Loyal Shopper",
+        6: "Window Shopper",
+        7: "VIP Elite"
     }
     
     # Return name if available, otherwise generic
