@@ -1,6 +1,4 @@
-"""
-Machine Learning model management
-"""
+# Machine Learning model management
 import numpy as np
 import pandas as pd
 from app.preprocess import (
@@ -21,7 +19,6 @@ from app.utils import (
 
 
 class CustomerSegmentationModel:
-    """Wrapper class for K-Means customer segmentation model"""
     
     def __init__(self):
         self.kmeans = None
@@ -31,14 +28,8 @@ class CustomerSegmentationModel:
         self.X_scaled = None
         
     def train(self, n_clusters=None):
-        """
-        Train the K-Means model
-        Returns: training metrics
-        """
-        # Load dataset
+        # Load and preprocess dataset
         self.df = load_dataset()
-        
-        # Preprocess data
         self.X_scaled, self.feature_names, self.scaler = preprocess_data(self.df)
         
         # Train model
@@ -55,7 +46,7 @@ class CustomerSegmentationModel:
         }
     
     def load_models(self):
-        """Load trained models from disk"""
+        # Load trained models from disk
         self.kmeans = load_model(KMEANS_MODEL_PATH)
         self.scaler = load_model(SCALER_MODEL_PATH)
         
@@ -69,28 +60,23 @@ class CustomerSegmentationModel:
         return True
     
     def predict(self, customer_data):
-        """
-        Predict customer segment
-        customer_data: dict with keys age, annual_income, spending_score, purchase_frequency
-        """
+        # Predict customer segment
         if self.kmeans is None or self.scaler is None:
             raise ValueError("Model not trained or loaded")
         
-        # Prepare input data
+        # Prepare and scale input data
         features = np.array([[
             customer_data['age'],
             customer_data['annual_income'],
             customer_data['spending_score'],
             customer_data['purchase_frequency']
         ]])
-        
-        # Scale features
         features_scaled = self.scaler.transform(features)
         
         # Predict cluster
         cluster = int(self.kmeans.predict(features_scaled)[0])
         
-        # Calculate distances to all cluster centers for confidence
+        # Calculate confidence
         distances = self.kmeans.transform(features_scaled)[0]
         confidence = calculate_confidence(distances, cluster)
         
@@ -104,7 +90,7 @@ class CustomerSegmentationModel:
         }
     
     def get_cluster_statistics(self):
-        """Get statistics for each cluster"""
+        # Get statistics for each cluster
         if self.kmeans is None or self.df is None:
             raise ValueError("Model not trained or loaded")
         
@@ -137,7 +123,7 @@ class CustomerSegmentationModel:
         }
     
     def get_elbow_data(self):
-        """Get elbow method data for visualization"""
+        # Get elbow method data for visualization
         if self.X_scaled is None:
             self.df = load_dataset()
             self.X_scaled, self.feature_names, self.scaler = preprocess_data(self.df)

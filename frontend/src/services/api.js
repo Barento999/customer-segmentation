@@ -1,20 +1,16 @@
 /**
- * API service for communicating with FastAPI backend
+ * API service for backend communication
  */
 import axios from "axios";
 
-// Base URL for API
 const API_BASE_URL = "http://localhost:8000";
 
-// Create axios instance with default config
 const api = axios.create({
   baseURL: API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  headers: { "Content-Type": "application/json" },
 });
 
-// Add request interceptor to include auth token
+// Add auth token to requests
 api.interceptors.request.use(
   (config) => {
     const token = sessionStorage.getItem("token");
@@ -23,20 +19,16 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  },
+  (error) => Promise.reject(error),
 );
 
-// Add response interceptor to handle auth errors
+// Handle auth errors
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Token expired or invalid
       sessionStorage.removeItem("token");
       sessionStorage.removeItem("user");
-      // Redirect to login if not already there
       if (window.location.pathname !== "/login") {
         window.location.href = "/login";
       }

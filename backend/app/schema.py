@@ -1,12 +1,9 @@
-"""
-Pydantic schemas for request/response validation
-"""
+# Pydantic schemas for request/response validation
 from pydantic import BaseModel, Field
 from typing import List, Dict
 
 
 class CustomerInput(BaseModel):
-    """Schema for customer data input"""
     sex: str = Field(..., description="Customer sex (Male/Female)")
     age: int = Field(..., ge=18, le=100, description="Customer age")
     annual_income: float = Field(..., ge=0, description="Annual income in thousands")
@@ -26,7 +23,6 @@ class CustomerInput(BaseModel):
 
 
 class PredictionResponse(BaseModel):
-    """Schema for prediction response"""
     cluster: int
     cluster_name: str
     confidence: float

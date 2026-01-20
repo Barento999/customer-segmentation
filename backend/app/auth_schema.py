@@ -1,6 +1,4 @@
-"""
-Authentication and User schemas
-"""
+# Authentication and User schemas
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional, List
 from datetime import datetime
@@ -35,7 +33,6 @@ class UserResponse(UserBase):
 
 
 class UserProfile(UserResponse):
-    """Extended user profile with statistics"""
     total_predictions: int = 0
     total_saved_profiles: int = 0
 

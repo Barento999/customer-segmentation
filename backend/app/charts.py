@@ -1,14 +1,11 @@
-"""
-Chart generation using matplotlib
-"""
+# Chart generation using matplotlib
 import matplotlib
-matplotlib.use('Agg')  # Use non-interactive backend for server
+matplotlib.use('Agg')  # Non-interactive backend for server
 import matplotlib.pyplot as plt
 import seaborn as sns
 import io
 import base64
 from pathlib import Path
-
 
 # Set style
 sns.set_style("whitegrid")
@@ -16,10 +13,8 @@ plt.rcParams['figure.facecolor'] = 'white'
 
 
 def generate_cluster_charts(clusters_data):
-    """
-    Generate cluster visualization charts
-    Returns: dict with base64 encoded images
-    """
+    # Generate cluster visualization charts
+    # Returns: dict with base64 encoded images
     clusters = clusters_data['clusters']
     
     # Prepare data
@@ -100,10 +95,8 @@ def generate_cluster_charts(clusters_data):
 
 
 def generate_elbow_chart(elbow_data):
-    """
-    Generate elbow method chart
-    Returns: base64 encoded image
-    """
+    # Generate elbow method chart
+    # Returns: base64 encoded image
     k_range = elbow_data['k_range']
     inertias = elbow_data['inertias']
     silhouette_scores = elbow_data['silhouette_scores']
@@ -137,9 +130,7 @@ def generate_elbow_chart(elbow_data):
 
 
 def fig_to_base64(fig):
-    """
-    Convert matplotlib figure to base64 encoded string
-    """
+    # Convert matplotlib figure to base64 encoded string
     buf = io.BytesIO()
     fig.savefig(buf, format='png', dpi=100, bbox_inches='tight')
     buf.seek(0)

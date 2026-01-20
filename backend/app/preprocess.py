@@ -1,6 +1,4 @@
-"""
-Data preprocessing and feature engineering
-"""
+# Data preprocessing and feature engineering
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -10,18 +8,17 @@ from app.utils import DATASET_PATH
 
 
 def load_dataset():
-    """Load customer dataset from CSV"""
+    # Load customer dataset from CSV
     try:
         df = pd.read_csv(DATASET_PATH)
         return df
     except FileNotFoundError:
-        # Generate sample dataset if file doesn't exist
         print("Dataset not found. Generating sample data...")
         return generate_sample_data()
 
 
 def generate_sample_data(n_samples=5000):
-    """Generate sample customer data for demonstration"""
+    # Generate sample customer data
     np.random.seed(42)
     
     data = {

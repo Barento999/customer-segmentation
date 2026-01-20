@@ -1,42 +1,32 @@
-"""
-FastAPI main application
-"""
+# FastAPI main application
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import json
-from app.schema import (
-    CustomerInput,
-    PredictionResponse,
-    TrainResponse,
-    ClustersResponse
-)
+from app.schema import CustomerInput, PredictionResponse, TrainResponse, ClustersResponse
 from app.model import ml_model
 from app.database import init_db, get_db, PredictionHistory, User
 from app.auth import get_current_active_user
 from app.routes import auth, users, profiles, admin
 from app.charts import generate_cluster_charts, generate_elbow_chart
 
-# Initialize database
 init_db()
 
-# Create FastAPI app
 app = FastAPI(
     title="Customer Segmentation API",
-    description="ML-powered customer segmentation using K-Means clustering with authentication",
+    description="ML-powered customer segmentation using K-Means clustering",
     version="2.0.0"
 )
 
-# Configure CORS
+# Allow frontend to connect
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],  # Explicit origins
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Include routers
 app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(profiles.router)
@@ -45,31 +35,19 @@ app.include_router(admin.router)
 
 @app.get("/")
 async def health_check():
-    """Health check endpoint"""
-    return {
-        "status": "healthy",
-        "message": "Customer Segmentation API is running",
-        "version": "1.0.0"
-    }
+    return {"status": "healthy", "message": "Customer Segmentation API is running"}
 
 
 @app.post("/train", response_model=TrainResponse)
 async def train_model():
-    """
-    Train the K-Means clustering model
-    Automatically determines optimal number of clusters
-    """
     try:
-        # Train model
         metrics = ml_model.train()
-        
         return TrainResponse(
             message="Model trained successfully",
             n_clusters=metrics['n_clusters'],
             silhouette_score=metrics['silhouette_score'],
             inertia=metrics['inertia']
         )
-    
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Training failed: {str(e)}")
 
@@ -80,21 +58,11 @@ async def predict_segment(
     current_user: User = Depends(get_current_active_user),
     db: Session = Depends(get_db)
 ):
-    """
-    Predict customer segment based on input features
-    Requires authentication
-    """
     try:
-        # Load models if not already loaded
         if ml_model.kmeans is None:
-            loaded = ml_model.load_models()
-            if not loaded:
-                raise HTTPException(
-                    status_code=400,
-                    detail="Model not trained. Please train the model first using /train endpoint"
-                )
+            if not ml_model.load_models():
+                raise HTTPException(status_code=400, detail="Model not trained")
         
-        # Prepare customer data
         customer_data = {
             'sex': customer.sex,
             'age': customer.age,
@@ -103,10 +71,9 @@ async def predict_segment(
             'purchase_frequency': customer.purchase_frequency
         }
         
-        # Make prediction
         prediction = ml_model.predict(customer_data)
         
-        # Save to prediction history
+        # Save to history
         history_entry = PredictionHistory(
             user_id=current_user.id,
             customer_data=json.dumps(customer_data),
@@ -123,7 +90,6 @@ async def predict_segment(
             confidence=prediction['confidence'],
             customer_data=customer_data
         )
-    
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
@@ -132,25 +98,13 @@ async def predict_segment(
 
 @app.get("/clusters", response_model=ClustersResponse)
 async def get_clusters(current_user: User = Depends(get_current_active_user)):
-    """
-    Get statistics for all customer clusters
-    Requires authentication
-    """
     try:
-        # Load models if not already loaded
         if ml_model.kmeans is None:
-            loaded = ml_model.load_models()
-            if not loaded:
-                raise HTTPException(
-                    status_code=400,
-                    detail="Model not trained. Please train the model first using /train endpoint"
-                )
+            if not ml_model.load_models():
+                raise HTTPException(status_code=400, detail="Model not trained")
         
-        # Get cluster statistics
         stats = ml_model.get_cluster_statistics()
-        
         return ClustersResponse(**stats)
-    
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
@@ -159,37 +113,20 @@ async def get_clusters(current_user: User = Depends(get_current_active_user)):
 
 @app.get("/elbow")
 async def get_elbow_data(current_user: User = Depends(get_current_active_user)):
-    """
-    Get elbow method data for cluster optimization visualization
-    Requires authentication
-    """
     try:
-        elbow_data = ml_model.get_elbow_data()
-        return elbow_data
+        return ml_model.get_elbow_data()
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to get elbow data: {str(e)}")
 
 
 @app.get("/charts/clusters")
 async def get_cluster_charts(current_user: User = Depends(get_current_active_user)):
-    """
-    Get cluster visualization charts as base64 encoded images
-    Requires authentication
-    """
     try:
-        # Load models if not already loaded
         if ml_model.kmeans is None:
-            loaded = ml_model.load_models()
-            if not loaded:
-                raise HTTPException(
-                    status_code=400,
-                    detail="Model not trained. Please train the model first using /train endpoint"
-                )
+            if not ml_model.load_models():
+                raise HTTPException(status_code=400, detail="Model not trained")
         
-        # Get cluster statistics
         stats = ml_model.get_cluster_statistics()
-        
-        # Generate charts
         charts = generate_cluster_charts(stats)
         
         return {
@@ -197,28 +134,18 @@ async def get_cluster_charts(current_user: User = Depends(get_current_active_use
             "total_customers": stats['total_customers'],
             "n_clusters": stats['n_clusters']
         }
-    
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to generate charts: {str(e)}")
 
 
 @app.get("/charts/elbow")
 async def get_elbow_chart(current_user: User = Depends(get_current_active_user)):
-    """
-    Get elbow method chart as base64 encoded image
-    Requires authentication
-    """
     try:
         elbow_data = ml_model.get_elbow_data()
         chart = generate_elbow_chart(elbow_data)
-        
-        return {
-            "chart": chart,
-            "optimal_k": elbow_data['optimal_k']
-        }
-    
+        return {"chart": chart, "optimal_k": elbow_data['optimal_k']}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to generate elbow chart: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate chart: {str(e)}")
 
 
 @app.get("/history")
@@ -228,9 +155,6 @@ async def get_prediction_history(
     current_user: User = Depends(get_current_active_user),
     db: Session = Depends(get_db)
 ):
-    """
-    Get prediction history for current user
-    """
     history = db.query(PredictionHistory).filter(
         PredictionHistory.user_id == current_user.id
     ).order_by(PredictionHistory.created_at.desc()).offset(skip).limit(limit).all()

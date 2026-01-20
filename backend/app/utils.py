@@ -1,10 +1,7 @@
-"""
-Utility functions for the application
-"""
+# Utility functions
 import os
 import joblib
 from pathlib import Path
-
 
 # Define paths
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +19,6 @@ DATASET_PATH = DATA_DIR / "customers.csv"
 
 
 def save_model(model, filepath):
-    """Save model to disk using joblib"""
     joblib.dump(model, filepath)
     print(f"Model saved to {filepath}")
 

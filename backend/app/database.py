@@ -1,6 +1,4 @@
-"""
-Database configuration and models
-"""
+# Database configuration and models
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey, Text, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
@@ -19,7 +17,6 @@ Base = declarative_base()
 
 
 class User(Base):
-    """User model"""
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -27,18 +24,16 @@ class User(Base):
     username = Column(String, unique=True, index=True, nullable=False)
     full_name = Column(String)
     hashed_password = Column(String, nullable=False)
-    role = Column(String, default="user")  # user, admin, analyst
+    role = Column(String, default="user")
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    # Relationships
     customer_profiles = relationship("CustomerProfile", back_populates="user", cascade="all, delete-orphan")
     prediction_history = relationship("PredictionHistory", back_populates="user", cascade="all, delete-orphan")
 
 
 class CustomerProfile(Base):
-    """Saved customer profiles"""
     __tablename__ = "customer_profiles"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -53,28 +48,25 @@ class CustomerProfile(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    # Relationships
     user = relationship("User", back_populates="customer_profiles")
 
 
 class PredictionHistory(Base):
-    """Prediction history"""
     __tablename__ = "prediction_history"
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    customer_data = Column(Text, nullable=False)  # JSON string
+    customer_data = Column(Text, nullable=False)
     cluster = Column(Integer)
     cluster_name = Column(String)
     confidence = Column(Integer)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-    # Relationships
     user = relationship("User", back_populates="prediction_history")
 
 
 def get_db():
-    """Dependency for getting database session"""
+    # Get database session
     db = SessionLocal()
     try:
         yield db
@@ -83,5 +75,5 @@ def get_db():
 
 
 def init_db():
-    """Initialize database tables"""
+    # Initialize database tables
     Base.metadata.create_all(bind=engine)
