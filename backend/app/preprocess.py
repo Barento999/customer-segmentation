@@ -40,10 +40,7 @@ def generate_sample_data(n_samples=5000):
 
 
 def preprocess_data(df):
-    """
-    Preprocess customer data for clustering
-    Returns: features array, feature names, and scaler
-    """
+  
     # Select features for clustering (excluding Sex and CustomerID)
     feature_columns = ['Age', 'Annual_Income', 'Spending_Score', 'Purchase_Frequency']
     
@@ -58,10 +55,7 @@ def preprocess_data(df):
 
 
 def find_optimal_clusters(X, max_clusters=10):
-    """
-    Use Elbow Method to find optimal number of clusters
-    Returns: optimal k and inertia values for plotting
-    """
+   
     inertias = []
     silhouette_scores = []
     K_range = range(2, min(max_clusters + 1, len(X)))
@@ -82,10 +76,7 @@ def find_optimal_clusters(X, max_clusters=10):
 
 
 def train_kmeans_model(X, n_clusters=None):
-    """
-    Train K-Means clustering model
-    If n_clusters is None, find optimal number automatically
-    """
+   
     if n_clusters is None:
         n_clusters, _, _, _ = find_optimal_clusters(X)
         print(f"Optimal number of clusters: {n_clusters}")

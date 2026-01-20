@@ -1,6 +1,4 @@
-"""
-Generate a new customer dataset with 5000 records including Sex field
-"""
+
 import pandas as pd
 import numpy as np
 from pathlib import Path

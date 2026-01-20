@@ -30,7 +30,6 @@ class PredictionResponse(BaseModel):
 
 
 class TrainResponse(BaseModel):
-    """Schema for training response"""
     message: str
     n_clusters: int
     silhouette_score: float
@@ -38,7 +37,6 @@ class TrainResponse(BaseModel):
 
 
 class ClusterStats(BaseModel):
-    """Schema for cluster statistics"""
     cluster_id: int
     cluster_name: str
     size: int
@@ -49,7 +47,6 @@ class ClusterStats(BaseModel):
 
 
 class ClustersResponse(BaseModel):
-    """Schema for clusters statistics response"""
     total_customers: int
     n_clusters: int
     clusters: List[ClusterStats]

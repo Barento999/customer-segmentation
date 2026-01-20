@@ -1,3 +1,1 @@
-"""
-Test package for Customer Segmentation API
-"""
+# Test package for Customer Segmentation API

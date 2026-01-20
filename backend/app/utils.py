@@ -24,16 +24,13 @@ def save_model(model, filepath):
 
 
 def load_model(filepath):
-    """Load model from disk using joblib"""
     if not os.path.exists(filepath):
         return None
     return joblib.load(filepath)
 
 
 def get_cluster_name(cluster_id, cluster_centers, feature_names):
-    """
-    Generate descriptive name for cluster based on characteristics
-    """
+   
     cluster_names = {
         0: "Budget Conscious",
         1: "High Value",
@@ -50,10 +47,7 @@ def get_cluster_name(cluster_id, cluster_centers, feature_names):
 
 
 def calculate_confidence(distances, predicted_cluster):
-    """
-    Calculate prediction confidence based on distance to cluster centers
-    Simple confidence metric: inverse of normalized distance
-    """
+   
     if len(distances) == 0:
         return 0.0
     

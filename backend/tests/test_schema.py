@@ -1,6 +1,4 @@
-"""
-Schema validation tests
-"""
+# Schema validation tests
 import pytest
 from pydantic import ValidationError
 from app.schema import CustomerInput, PredictionResponse, TrainResponse, ClusterStats, ClustersResponse

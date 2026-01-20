@@ -1,6 +1,4 @@
-"""
-ML model tests
-"""
+# ML model tests
 import pytest
 import numpy as np
 from app.model import CustomerSegmentationModel
