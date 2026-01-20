@@ -78,47 +78,7 @@ def generate_cluster_charts(clusters_data):
     # 3. Heatmap - Cluster Features
     fig, ax = plt.subplots(figsize=(12, 8))
     
-    # Normalize data for heatmap
-    import numpy as np
-    data = np.array([
-        avg_ages,
-        [income/1000 for income in avg_incomes],
-        avg_spending,
-        avg_frequency
-    ])
-    
-    # Normalize each row to 0-100 scale for better visualization
-    data_normalized = np.zeros_like(data)
-    for i in range(data.shape[0]):
-        min_val = data[i].min()
-        max_val = data[i].max()
-        if max_val > min_val:
-            data_normalized[i] = (data[i] - min_val) / (max_val - min_val) * 100
-    
-    im = ax.imshow(data_normalized, cmap='YlOrRd', aspect='auto')
-    
-    # Set ticks
-    ax.set_xticks(range(len(cluster_names)))
-    ax.set_yticks(range(4))
-    ax.set_xticklabels(cluster_names, rotation=45, ha='right')
-    ax.set_yticklabels(['Age', 'Income (K)', 'Spending Score', 'Purchase Frequency'])
-    
-    # Add colorbar
-    cbar = plt.colorbar(im, ax=ax)
-    cbar.set_label('Normalized Value (0-100)', rotation=270, labelpad=20)
-    
-    # Add text annotations
-    for i in range(4):
-        for j in range(len(cluster_names)):
-            text = ax.text(j, i, f'{data_normalized[i, j]:.0f}',
-                          ha="center", va="center", color="black", fontsize=10, weight='bold')
-    
-    ax.set_title('Cluster Feature Heatmap (Normalized)', fontsize=16, weight='bold', pad=20)
-    plt.tight_layout()
-    charts['heatmap'] = fig_to_base64(fig)
-    plt.close(fig)
-    
-    # 4. Horizontal Bar Chart - Cluster Sizes
+    # 3. Horizontal Bar Chart - Cluster Sizes
     fig, ax = plt.subplots(figsize=(10, 6))
     y_pos = range(len(cluster_names))
     ax.barh(y_pos, sizes, color=colors[:len(clusters)])

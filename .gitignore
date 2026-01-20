@@ -79,6 +79,8 @@ desktop.ini
 # Jupyter Notebook
 .ipynb_checkpoints/
 *.ipynb
+notebooks/
+backend/notebooks/
 
 # Distribution / packaging
 .Python

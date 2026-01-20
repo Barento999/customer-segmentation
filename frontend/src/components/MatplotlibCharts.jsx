@@ -147,27 +147,6 @@ const MatplotlibCharts = () => {
             />
           </div>
 
-          {/* Heatmap */}
-          <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold text-gray-800">
-                🔥 Feature Heatmap
-              </h3>
-              <button
-                onClick={() =>
-                  downloadChart(charts.charts.heatmap, "feature-heatmap.png")
-                }
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold">
-                💾 Download
-              </button>
-            </div>
-            <img
-              src={charts.charts.heatmap}
-              alt="Cluster Feature Heatmap"
-              className="w-full h-auto"
-            />
-          </div>
-
           {/* Size Chart */}
           <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
             <div className="flex justify-between items-center mb-4">
